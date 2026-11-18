@@ -548,7 +548,7 @@ const DAYS=[
   ["🌉","El Puente de los Suspiros y la Bajada de Baños, el rincón más bonito de Barranco. Es corto, aunque tiene escaleras.","Puente de los Suspiros Barranco",0,"Barranco"],
   ["🖼️","Museo Pedro de Osma: arte virreinal en una mansión antigua. De martes a domingo, de 10:00 a 18:00.","Museo Pedro de Osma Barranco",3,"Barranco"],
   ["🍩","Merienda en Pregón de las Once, jirón Tejada 105: postres limeños de antes, como el ranfañote.","Pregon de las Once Jiron Tejada 105 Barranco",0,"Barranco"],
-  ["🍽️","Cena en el restaurante Huaca Pucllana, junto a una pirámide de adobe de 1.500 años iluminada de noche. A unos 10 minutos del hotel. La hora la eligen ustedes: lo más bonito es de noche, con la pirámide iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
+  ["🍽️","Cena en el restaurante Huaca Pucllana, junto a una pirámide de adobe de 1.500 años iluminada de noche. A las 20:30, a unos 10 minutos del hotel en taxi. De noche la pirámide está iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
  {d:22,c:"Centro histórico",cs:["Miraflores","Centro histórico"],t:"Domingo libre y fuentes de colores",w:"Mañana sin prisa, almuerzo marino y el Circuito Mágico del Agua",it:[
   ["☕","Mañana sin prisa: desayuno largo y la piscina del hotel, o un rato en el Parque Kennedy, famoso por sus gatos.","Parque Kennedy Miraflores",0,"Miraflores"],
   ["🏖️","Para ver la playa sin caminar mucho: en taxi al circuito de playas de la Costa Verde (Waikiki y Makaha), con surfistas todo el año. El agua está fría.","Playa Waikiki Miraflores",0,"Miraflores"],
@@ -567,7 +567,7 @@ const R=[
  ["Pescados Capitales","Miraflores","marino","€€","Ceviches y tiraditos con nombres de pecados capitales. Más tranquilo a las 14:30 que a la una.","Pescados Capitales Av La Mar 1335 Miraflores"],
  ["La Mar","Miraflores","marino","€€€","La cebichería de Gastón Acurio, entre las mejores de Latinoamérica. Solo almuerzos y sin reservas: el fin de semana hay cola desde las 11:30.","La Mar Cebicheria Av Mariscal La Mar 770 Miraflores"],
  ["Cala","Barranco","marino","€€€","Frente al mar. Ya incluido el viernes, con la clase de ceviche.","Cala Restaurante Costa Verde Barranco"],
- ["Huaca Pucllana","Miraflores","peruana","€€€","Cocina criolla junto a la pirámide iluminada. Ya reservado para el sábado.","Restaurante Huaca Pucllana General Borgoño Miraflores"],
+ ["Huaca Pucllana","Miraflores","peruana","€€€","Cocina criolla junto a la pirámide iluminada. Ya reservado para el sábado a las 20:30.","Restaurante Huaca Pucllana General Borgoño Miraflores"],
  ["José Antonio","San Isidro","peruana","€€","Comida y dulces criollos desde hace más de 40 años. No tiene que ver con el hotel, aunque se llamen igual.","Restaurante Jose Antonio Bernardo Monteagudo 200 San Isidro"],
  ["La Lucha Sanguchería","Miraflores","calle","€","Sándwiches criollos (chicharrón, lechón) y jugos. Abre hasta muy tarde.","La Lucha Sangucheria Av Jose Larco 999 Miraflores"],
  ["Mercado N.º 1 de Surquillo","Surquillo","calle","€","Cruzando la Vía Expresa desde Miraflores: puestos de ceviche, jugos y frutas que no hay en Chile.","Mercado N 1 de Surquillo"],
@@ -588,7 +588,7 @@ const PL=[
  ["Parque del Amor",-12.1270,-77.0375,"plan","Malecón · sáb 21","Parque del Amor Miraflores"],
  ["Puente de los Suspiros",-12.1495,-77.0221,"plan","Barranco · sáb 21 · al lado, El Tío Mario (anticuchos y picarones)","Puente de los Suspiros Barranco"],
  ["Museo Pedro de Osma",-12.1530,-77.0228,"plan","Barranco · sáb 21","Museo Pedro de Osma Barranco"],
- ["Huaca Pucllana",-12.1110,-77.0335,"comer","Cena · sáb 21","Restaurante Huaca Pucllana General Borgoño Miraflores"],
+ ["Huaca Pucllana",-12.1110,-77.0335,"comer","Cena · sáb 21 a las 20:30","Restaurante Huaca Pucllana General Borgoño Miraflores"],
  ["Circuito Mágico del Agua",-12.0700,-77.0335,"plan","Fuentes de noche · dom 22","Circuito Magico del Agua Parque de la Reserva Lima"],
  ["Playas de la Costa Verde",-12.1315,-77.0372,"plan","Waikiki y Makaha · dom 22","Playa Waikiki Miraflores"],
  ["Punto Azul",-12.1225,-77.0285,"comer","Almuerzo · sáb 21","Punto Azul San Martin 595 Miraflores"],
@@ -667,8 +667,7 @@ const TASKS=[
  ["efe","Algo de efectivo en soles para taxis, propinas y carritos"],
  ["dat","Datos en el móvil (roaming o chip) y Uber o Cabify instalados"],
  ["seg","Seguro de viaje (no va incluido en el tour)"],
- ["hua","Decidir a qué hora ir a cenar a Huaca Pucllana el sábado"],
- ["ropa","Ropa ligera, un polerón, bloqueador y gafas de sol"],
+  ["ropa","Ropa ligera, un polerón, bloqueador y gafas de sol"],
  ["enc","Cargadores: los enchufes chilenos suelen servir; un adaptador universal por si acaso"]];
 let TK=LS("tareas")||{};
 function renderHome(){
@@ -753,7 +752,7 @@ $("legs").innerHTML=[
  ["plane","Jue 19 · 22:11","Llegada en el vuelo LA508 desde Santiago","Traslado incluido"],
  ["van","Vie 20 · 10:30","Recogida en el hotel: mercado y Cala","Incluido"],
  ["van","Vie 20 · 14:00","Recogida en el hotel: tour del centro (hasta 30 min de margen)","Incluido"],
- ["car","Sáb 21 · noche","Cena en Huaca Pucllana, a unos 10 min en taxi","Hora libre"],
+ ["car","Sáb 21 · 20:30","Cena en Huaca Pucllana: salir del hotel hacia las 20:10","En taxi, 10 min"],
  ["van","Lun 23 · 08:00","Recogida en el hotel hacia el aeropuerto","Incluido"],
  ["plane","Lun 23 · 12:55","Vuelo LA651 a Santiago (hora habitual)","Ver tarjeta de embarque"]].map(([i,a,b,c])=>`<li><span class="ic">${ico(i)}</span><span><b>${a}</b><small>${b}</small></span><span class="w">${c}</span></li>`).join("");
 $("mover").innerHTML=[
