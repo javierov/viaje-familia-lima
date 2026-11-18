@@ -522,8 +522,8 @@ const C={
  "Barranco":{c:"var(--bar)",s1:"#c9e6f0",s2:"#2f6688",slug:"barranco",f:"barranco"}};
 /* barrios: nombre, etiqueta, texto largo, texto de la tarjeta */
 const STOPS=[["Miraflores","19 – 23 nov","Tu barrio: el hotel, el malecón y el mar","El hotel y el mar"],
- ["Centro histórico","vie 20 · dom 22","Casa Aliaga, la Catedral, el Museo Larco y las fuentes","Lima colonial"],
- ["Barranco","vie 20 · sáb 21","Cala, el Puente de los Suspiros y los postres de antes","Arte y mar"]];
+ ["Centro histórico","vie 20 · sáb 21","Casa Aliaga, la Catedral, el Museo Larco y las fuentes","Lima colonial"],
+ ["Barranco","vie 20 · dom 22","Cala, el Puente de los Suspiros y los postres de antes","Arte y mar"]];
 const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, barrio] */
 const DAYS=[
@@ -535,25 +535,24 @@ const DAYS=[
  {d:20,c:"Barranco",cs:["Miraflores","Barranco","Centro histórico"],t:"Día gastronómico y Lima colonial",w:"Mercado, clase de ceviche en Cala y el centro histórico",it:[
   ["🚐","10:30 los recogen en el hotel para visitar un mercado limeño: frutas, ajíes y pescados. Prueben la chirimoya y la lúcuma.","",1,"Miraflores"],
   ["🐟","Hacia las 11:30, Cala, junto al mar: clase de ceviche y pisco sour, y almuerzo en la terraza mirando el Pacífico.","Cala Restaurante Costa Verde Barranco",1,"Barranco"],
-  ["ℹ️","Las horas de la mañana vienen de dos maneras en el itinerario: confírmenlas el jueves con el conductor del traslado.","",4,"Barranco"],
   ["🚐","14:00 recogida en el hotel para el tour por el centro. Es compartido: la recogida puede retrasarse hasta 30 minutos.","",1,"Centro histórico"],
   ["🏛️","Casa Aliaga, una mansión colonial con más de cinco siglos de historia, considerada la casa más antigua de América.","Casa Aliaga Jiron de la Union 224 Lima",1,"Centro histórico"],
   ["⛪","La Plaza Mayor, Patrimonio de la Humanidad, y la Catedral de Lima. Para entrar, mejor sin pantalones cortos ni camisetas sin mangas.","Catedral de Lima",1,"Centro histórico"],
   ["🖼️","Museo Larco, en una casona virreinal del siglo XVIII: 5.000 años de historia del antiguo Perú.","Museo Larco Pueblo Libre",1,"Centro histórico"],
   ["🍩","De vuelta en Miraflores: picarones con miel en el carrito de Mary, en el Parque Kennedy (desde las 15:00), a pocos minutos del hotel.","Picarones Mary Parque Kennedy Miraflores",0,"Miraflores"]]},
- {d:21,c:"Barranco",cs:["Miraflores","Barranco"],t:"El malecón, Barranco y la huaca",w:"Mar, el Puente de los Suspiros y cena en Huaca Pucllana",it:[
-  ["🌅","Mañana tranquila por el malecón de Miraflores, a tres cuadras del hotel: el Parque del Amor y los parapentes. Es llano y se hace en tramos cortos.","Parque del Amor Miraflores",0,"Miraflores"],
+ {d:21,c:"Miraflores",cs:["Miraflores","Centro histórico"],t:"Día libre y cena en Huaca Pucllana",w:"Malecón, tarde a su aire y cena a las 20:30",it:[
+  ["🌅","Sugerencia: mañana tranquila por el malecón de Miraflores, a tres cuadras del hotel: el Parque del Amor y los parapentes. Es llano y se hace en tramos cortos.","Parque del Amor Miraflores",0,"Miraflores"],
   ["🐟","Almuerzo marino en Punto Azul, calle San Martín 595: ceviche y jalea. Solo abre a mediodía (11:00 – 16:00); el sábado, mejor llegar antes de la una.","Punto Azul San Martin 595 Miraflores",0,"Miraflores"],
-  ["🚕","A Barranco en Uber o taxi de aplicación: unos 15 minutos.","",0,"Barranco"],
-  ["🌉","El Puente de los Suspiros y la Bajada de Baños, el rincón más bonito de Barranco. Es corto, aunque tiene escaleras.","Puente de los Suspiros Barranco",0,"Barranco"],
-  ["🖼️","Museo Pedro de Osma: arte virreinal en una mansión antigua. De martes a domingo, de 10:00 a 18:00.","Museo Pedro de Osma Barranco",3,"Barranco"],
-  ["🍩","Merienda en Pregón de las Once, jirón Tejada 105: postres limeños de antes, como el ranfañote.","Pregon de las Once Jiron Tejada 105 Barranco",0,"Barranco"],
-  ["🍽️","Cena en el restaurante Huaca Pucllana, junto a una pirámide de adobe de 1.500 años iluminada de noche. A las 20:30, a unos 10 minutos del hotel en taxi. De noche la pirámide está iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
- {d:22,c:"Centro histórico",cs:["Miraflores","Centro histórico"],t:"Domingo libre y fuentes de colores",w:"Mañana sin prisa, almuerzo marino y el Circuito Mágico del Agua",it:[
-  ["☕","Mañana sin prisa: desayuno largo y la piscina del hotel, o un rato en el Parque Kennedy, famoso por sus gatos.","Parque Kennedy Miraflores",0,"Miraflores"],
-  ["🏖️","Para ver la playa sin caminar mucho: en taxi al circuito de playas de la Costa Verde (Waikiki y Makaha), con surfistas todo el año. El agua está fría.","Playa Waikiki Miraflores",0,"Miraflores"],
+  ["☕","Tarde libre: descanso o piscina en el hotel, o un café en Larcomar mirando el mar.","Larcomar Miraflores",0,"Miraflores"],
+  ["🎶","Si tienen ganas, antes de cenar: Circuito Mágico del Agua, en el Parque de la Reserva (20 – 30 min en taxi). Fuentes con luces y música desde que oscurece, hacia las 18:30. Salgan de ahí a las 19:50 para llegar a la cena. Entradas en serpar.gob.pe.","Circuito Magico del Agua Parque de la Reserva Lima",3,"Centro histórico"],
+  ["🍽️","Cena en el restaurante Huaca Pucllana a las 20:30, a unos 10 minutos del hotel en taxi. De noche la pirámide está iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
+ {d:22,c:"Barranco",cs:["Miraflores","Barranco"],t:"Día libre: Barranco",w:"Playa, almuerzo marino y el barrio más bonito de Lima",it:[
+  ["🏖️","Sugerencia: mañana sin prisa y, en taxi, al circuito de playas de la Costa Verde (Waikiki y Makaha), con surfistas todo el año. El agua está fría.","Playa Waikiki Miraflores",0,"Miraflores"],
   ["🐟","Almuerzo en Pescados Capitales, avenida La Mar 1335: ceviches y tiraditos. El domingo abre hasta las 17:00; a las 14:30 hay menos gente.","Pescados Capitales Av La Mar 1335 Miraflores",0,"Miraflores"],
-  ["🎶","Tarde-noche: Circuito Mágico del Agua, en el Parque de la Reserva (20 – 30 min en taxi). Fuentes con luces y música; lo mejor empieza cuando oscurece, hacia las 18:30. Entradas en serpar.gob.pe.","Circuito Magico del Agua Parque de la Reserva Lima",3,"Centro histórico"],
+  ["🚕","A Barranco en Uber o taxi de aplicación: unos 15 minutos desde el hotel.","",0,"Barranco"],
+  ["🌉","El Puente de los Suspiros y la Bajada de Baños, el rincón más bonito de Barranco. Es corto, aunque tiene escaleras.","Puente de los Suspiros Barranco",0,"Barranco"],
+  ["🖼️","Museo Pedro de Osma: arte virreinal en una mansión antigua. Abre el domingo, de 10:00 a 18:00.","Museo Pedro de Osma Barranco",3,"Barranco"],
+  ["🍩","Merienda en Pregón de las Once, jirón Tejada 105: postres limeños de antes, como el ranfañote. O picarones en El Tío Mario, junto al puente.","Pregon de las Once Jiron Tejada 105 Barranco",0,"Barranco"],
   ["🧳","Vuelta temprano al hotel y maletas listas: mañana los recogen a las 08:00.","",0,"Miraflores"]]},
  {d:23,c:"Miraflores",cs:["Miraflores"],t:"Regreso a Santiago",w:"Recogida a las 08:00 y vuelo LA651",it:[
   ["☕","Desayuno temprano en el hotel.","",0,"Miraflores"],
@@ -586,15 +585,15 @@ const PL=[
  ["Plaza Mayor y Catedral",-12.0464,-77.0300,"plan","Tour del centro · vie 20","Catedral de Lima"],
  ["Museo Larco",-12.0725,-77.0707,"plan","Tour del centro · vie 20","Museo Larco Pueblo Libre"],
  ["Parque del Amor",-12.1270,-77.0375,"plan","Malecón · sáb 21","Parque del Amor Miraflores"],
- ["Puente de los Suspiros",-12.1495,-77.0221,"plan","Barranco · sáb 21 · al lado, El Tío Mario (anticuchos y picarones)","Puente de los Suspiros Barranco"],
- ["Museo Pedro de Osma",-12.1530,-77.0228,"plan","Barranco · sáb 21","Museo Pedro de Osma Barranco"],
+ ["Puente de los Suspiros",-12.1495,-77.0221,"plan","Barranco · dom 22 · al lado, El Tío Mario (anticuchos y picarones)","Puente de los Suspiros Barranco"],
+ ["Museo Pedro de Osma",-12.1530,-77.0228,"plan","Barranco · dom 22","Museo Pedro de Osma Barranco"],
  ["Huaca Pucllana",-12.1110,-77.0335,"comer","Cena · sáb 21 a las 20:30","Restaurante Huaca Pucllana General Borgoño Miraflores"],
- ["Circuito Mágico del Agua",-12.0700,-77.0335,"plan","Fuentes de noche · dom 22","Circuito Magico del Agua Parque de la Reserva Lima"],
+ ["Circuito Mágico del Agua",-12.0700,-77.0335,"plan","Fuentes de noche · sáb 21, si hay ganas","Circuito Magico del Agua Parque de la Reserva Lima"],
  ["Playas de la Costa Verde",-12.1315,-77.0372,"plan","Waikiki y Makaha · dom 22","Playa Waikiki Miraflores"],
  ["Punto Azul",-12.1225,-77.0285,"comer","Almuerzo · sáb 21","Punto Azul San Martin 595 Miraflores"],
  ["Pescados Capitales",-12.1045,-77.0500,"comer","Almuerzo · dom 22","Pescados Capitales Av La Mar 1335 Miraflores"],
  ["Picarones Mary",-12.1217,-77.0298,"comer","Parque Kennedy","Picarones Mary Parque Kennedy Miraflores"],
- ["Pregón de las Once",-12.1478,-77.0205,"comer","Postres limeños","Pregon de las Once Jiron Tejada 105 Barranco"],
+ ["Pregón de las Once",-12.1478,-77.0205,"comer","Postres limeños · dom 22","Pregon de las Once Jiron Tejada 105 Barranco"],
  ["Mercado N.º 1 de Surquillo",-12.1135,-77.0272,"comer","Mercado","Mercado N 1 de Surquillo"]];
 const PK={hotel:["El hotel","#c2603b"],plan:["Planes","#2f6f8f"],comer:["Comer","#7a8b4a"]};
 
