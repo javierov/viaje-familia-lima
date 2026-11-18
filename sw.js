@@ -1,5 +1,5 @@
 /* copia sin conexión de «Lima Familia»: solo toca sus propias copias (prefijo lf-) */
-const CACHE="lf-v5",FILES=["./","index.html","manifest.json","icono.png","icono-192.png","apple-touch-icon.png","favicon-32.png","fotos/miraflores.jpg","fotos/centro.jpg","fotos/barranco.jpg"];
+const CACHE="lf-v6",FILES=["./","index.html","manifest.json","icono.png","icono-192.png","apple-touch-icon.png","favicon-32.png","fotos/miraflores.jpg","fotos/centro.jpg","fotos/barranco.jpg","polizas/poliza-677989.bin","polizas/poliza-677995.bin","polizas/poliza-677994.bin"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("lf-")&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{const u=new URL(e.request.url);if(e.request.method!=="GET"||u.origin!==location.origin)return;

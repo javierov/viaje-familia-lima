@@ -400,17 +400,24 @@ button.ft{font:inherit}
 .cn{font-size:30px}
 @media (prefers-reduced-motion:reduce){.pl{animation:none;left:0}}
 /* mapa */
+.pinf{margin-top:10px;display:grid;gap:6px;border:1px solid var(--line2);border-radius:14px;padding:10px 12px;background:var(--fill)}.pinf label{font-size:13.5px;font-weight:700}.pinf .note{font-size:13px;margin:0}
+
+.rsv{list-style:none;margin:0;padding:0}.rsv li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.rsv li:last-child{border:0}.rsv b{display:block;font-size:14.5px;line-height:1.25}.rsv small{display:block;color:var(--soft);font-size:12.5px}.rsv .st{white-space:normal;text-align:center;max-width:9em}
+
+.dg2{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px;margin:12px 0 0;font-size:13.5px;line-height:1.4;color:var(--soft)}.dg2 svg{width:18px;height:18px;color:var(--steel2);margin-top:1px}.dg2 b{color:var(--ink)}
+.row .dt{white-space:normal}
+
 .pols{display:grid;gap:8px}.pols a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line2);border-radius:14px;padding:9px 12px;background:var(--fill);text-decoration:none;color:var(--ink)}.pols b{display:block;font-size:15px}.pols small{display:block;color:var(--soft);font-size:12.5px}.pols em{font-style:normal;font-weight:700;font-size:13.5px;color:var(--btnInk);background:var(--btn);border-radius:999px;padding:7px 12px;white-space:nowrap}
 
 .tn{display:grid;justify-items:end;gap:4px}.tn .tl{font-weight:700;white-space:nowrap;text-decoration:none;color:var(--steel2);border:1px solid var(--line2);border-radius:999px;padding:5px 11px;min-height:34px;display:inline-flex;align-items:center}.tn .wa{font-size:12.5px;font-weight:700;text-decoration:none;color:#fff;background:#25a35a;border-radius:999px;padding:3px 10px}
 
 .pasos{list-style:none;margin:0;padding:0;display:grid;gap:8px}.pasos li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;font-size:14.5px;line-height:1.4}.pasos .nu{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--btnInk);background:var(--btn)}
 
-.mapw{height:min(62vh,470px);min-height:300px;background:#efe3cf;z-index:0}
+.mapw{height:min(50vh,400px);min-height:260px;background:#efe3cf;z-index:0}
 .mapw .leaflet-container,.mapw.leaflet-container{background:#efe3cf;font:inherit}
 .mapw.tiles .leaflet-tile-pane{filter:saturate(.75) sepia(.12)}
-.lpin span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;color:#fff;font-size:13px;font-weight:800;border:2.5px solid #fff;box-shadow:0 2px 6px rgb(0 0 0/.35);cursor:pointer}
-.lpin.h span{width:36px;height:36px;margin:-2px;font-size:14px}
+.lpin span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:13px;font-weight:800;border:2.5px solid #fff;box-shadow:0 2px 6px rgb(0 0 0/.35);cursor:pointer}
+.lpin.h span{width:32px;height:32px;margin:-2px;font-size:14px}
 .lpop{display:grid;gap:4px;min-width:170px}.lpop b{font-size:15px;line-height:1.25;color:#3a2a1e}.lpop small{font-size:13px;color:#6e5a48}
 .lpop .btn{display:inline-grid;place-items:center;margin-top:6px;min-height:38px;font-size:14px;text-decoration:none;color:#fff;background:#c2603b}
 .leaflet-popup-content{margin:12px 14px}.leaflet-popup-content-wrapper{border-radius:14px}
@@ -1148,7 +1155,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="mchips" id="mchips"></div>
     <div class="mapw" id="mapw"></div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="pin"></i></span>Todos los lugares</h3><ul class="plist" id="plist"></ul></div>
-    <p class="note" style="margin-top:12px;font-size:13px">Toca un punto para ver qué es y cómo llegar. «Cómo llegar» abre Google Maps.</p>
+    <p class="note" style="margin-top:12px;font-size:13px">Toca un punto para ver qué es y cómo llegar. En el celular, el mapa se mueve con dos dedos (con uno se sigue bajando la página). «Cómo llegar» abre Google Maps.</p>
   </div>
 </section>
 
@@ -1156,7 +1163,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="ptl"><h1>Dónde comer</h1><p>Platos típicos, mercados y postres limeños.</p></div>
   <div class="chips" id="rchips"></div>
   <div class="pad"><div id="rlist"></div>
-    <p class="note" style="margin-top:14px;font-size:13px">Por persona: € hasta S/ 40 · €€ de S/ 40 a 90 · €€€ más de S/ 90. Las propinas no van incluidas (se suele dejar un 10 %). Los horarios cambian: mejor mirarlos en Google Maps antes de ir.</p></div>
+    <p class="note" style="margin-top:14px;font-size:13px">Por persona: $ hasta S/ 40 · $$ de S/ 40 a 90 · $$$ más de S/ 90. Las propinas no van incluidas (se suele dejar un 10 %). Los horarios cambian: mejor mirarlos en Google Maps antes de ir.</p></div>
 </section>
 
 <section id="s-tiempo" hidden>
@@ -1172,6 +1179,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="ptl"><h1>Útil</h1><p>Lo que hay que tener listo, los traslados y el cambio de moneda.</p></div>
   <div class="pad">
     <div class="box blk" id="tareas"><h3 class="bh"><span class="bi"><i data-ic="list"></i></span>Antes de salir<span class="cnt" id="tcnt"></span></h3><div class="bar"><i id="tbar"></i></div><div id="tlist"></div></div>
+    <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="ticket"></i></span>Reservas y pagos</h3>
+      <p class="rg" style="margin:0 0 6px">Ya pagado o reservado</p><ul class="rsv"><li><span><b>Vuelos LATAM</b><small>LA508 jue 19 y LA651 lun 23 · el código está en el correo de LATAM</small></span><span class="st ok">Comprados</span></li><li><span><b>Hotel José Antonio Executive</b><small>4 noches, del 19 al 23</small></span><span class="st ok">Reservado</span></li><li><span><b>Traslados aeropuerto ↔ hotel</b><small>Llegada el 19 y salida el 23 a las 08:00</small></span><span class="st ok">Incluidos</span></li><li><span><b>Tour del viernes 20</b><small>Mercado, clase en Cala con almuerzo y centro histórico</small></span><span class="st ok">Incluido</span></li><li><span><b>Cena en Huaca Pucllana</b><small>Sábado 21 a las 20:30</small></span><span class="st ok">Reservada</span></li><li><span><b>Seguro de viaje Interassist</b><small>3 vouchers · ver Seguro de viaje</small></span><span class="st ok">Contratado</span></li></ul>
+      <p class="rg" style="margin:14px 0 6px">Se paga allá</p><ul class="rsv"><li><span><b>Circuito Mágico del Agua (sáb 21, opcional)</b><small>Entradas en serpar.gob.pe, unos pocos soles</small></span><span class="st pen">Comprar allí o en la web</span></li><li><span><b>Museo Pedro de Osma (dom 22)</b><small>Entrada en la puerta</small></span><span class="st pen">Pagar allí</span></li><li><span><b>Comidas libres y taxis</b><small>Ver el gasto aproximado de cada día</small></span><span class="st pen">Pagar allí</span></li></ul>
+    </div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="van"></i></span>Traslados y horarios</h3><ul class="legs" id="legs"></ul></div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="car"></i></span>Moverse por Lima</h3><ul class="tips" id="mover"></ul></div>
     <div class="box blk" id="monedas"><h3 class="bh"><span class="bi"><i data-ic="coin"></i></span>Conversor de monedas</h3>
@@ -1187,16 +1198,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <p class="note" style="margin:0 0 10px">Interassist · plan Inter 60 Premium · del 19 al 23 de noviembre.</p>
       <div class="tel"><span>Vouchers<small>Lo primero que piden al llamar</small></span><b style="text-align:right">3 vouchers<br><small style="color:var(--soft);font-weight:500">abajo, con cada póliza</small></b></div>
       <div class="tel"><span>Central de asistencia<small>Avisar dentro de las 24 horas de lo ocurrido</small></span><span class="tn"><a class="tl" href="tel:+5491165409429"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>+54 9 11 6540-9429</a><a class="wa" href="https://wa.me/5491165409429" target="_blank" rel="noopener">WhatsApp</a></span></div>
-      <div class="tel"><span>Llamada por cobrar desde Perú<small>«Resto del mundo»</small></span><span class="tn"><a class="tl" href="tel:+541153529130"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>+54 11 5352-9130</a></span></div>
+      <div class="tel"><span>Llamada por cobrar desde Perú<small>Interassist Llamadas · dos líneas, si una no contesta probar la otra</small></span><span class="tn"><a class="tl" href="tel:+541153529130"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>+54 11 5352-9130</a><a class="tl" href="tel:+541153529131"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>+54 11 5352-9131</a></span></div>
       <p class="rg" style="margin:14px 0 8px">Pólizas (PDF)</p>
-      <div class="pols"><a href="polizas/poliza-677989.pdf" target="_blank" rel="noopener"><span><b>Sergio</b><small>Voucher 677989</small></span><em>Ver póliza</em></a><a href="polizas/poliza-677995.pdf" target="_blank" rel="noopener"><span><b>Nicolás</b><small>Voucher 677995</small></span><em>Ver póliza</em></a><a href="polizas/poliza-677994.pdf" target="_blank" rel="noopener"><span><b>Karenlyn</b><small>Voucher 677994</small></span><em>Ver póliza</em></a></div>
+      <div class="pols"><a href="#" data-pol="677989"><span><b>Sergio</b><small>Voucher 677989</small></span><em>Ver póliza</em></a><a href="#" data-pol="677995"><span><b>Nicolás</b><small>Voucher 677995</small></span><em>Ver póliza</em></a><a href="#" data-pol="677994"><span><b>Karenlyn</b><small>Voucher 677994</small></span><em>Ver póliza</em></a></div>
 
+      <form class="pinf" id="pinf" hidden autocomplete="off"><label for="pinin">Clave de las pólizas (te la dio tu agencia)</label><div class="two"><input type="text" inputmode="numeric" id="pinin" maxlength="6" placeholder="6 números"><button class="btn" type="submit">Abrir</button></div><p class="note" id="pinmsg"></p></form>
       <p class="rg" style="margin:14px 0 8px">Si necesitan usar el seguro</p>
-      <ol class="pasos"><li><span class="nu">1</span><span>Guarden en el móvil el WhatsApp de la central: <span style="white-space:nowrap">+54 9 11 6540 9429</span>.</span></li><li><span class="nu">2</span><span>Escriban dentro de las 24 horas de lo ocurrido, y mejor antes de ir a un médico: ellos indican dónde ir.</span></li><li><span class="nu">3</span><span>Tengan a mano el número de voucher y la fecha de inicio del viaje (19 de noviembre): se los van a pedir.</span></li><li><span class="nu">4</span><span>Cuenten con detalle qué está pasando.</span></li><li><span class="nu">5</span><span>Para hablar con una persona, llamen a los teléfonos del voucher. Desde Perú: por cobrar al <span style="white-space:nowrap">+54 11 5352-9130</span>.</span></li></ol>
+      <ol class="pasos"><li><span class="nu">1</span><span>Guarden en el celular el WhatsApp de la central: <span style="white-space:nowrap">+54 9 11 6540 9429</span>.</span></li><li><span class="nu">2</span><span>Escriban dentro de las 24 horas de lo ocurrido, y mejor antes de ir a un médico: ellos indican dónde ir.</span></li><li><span class="nu">3</span><span>Tengan a mano el número de voucher y la fecha de inicio del viaje (19 de noviembre): se los van a pedir.</span></li><li><span class="nu">4</span><span>Cuenten con detalle qué está pasando.</span></li><li><span class="nu">5</span><span>Para hablar con una persona, llamen a los teléfonos del voucher. Desde Perú: por cobrar al <span style="white-space:nowrap">+54 11 5352-9130</span> o al <span style="white-space:nowrap">+54 11 5352-9131</span>.</span></li></ol>
       <p class="note" style="font-size:12.5px;margin:8px 0 0">La atención depende de los centros de salud disponibles en la ciudad.</p>
       <ul class="tips" style="margin-top:12px">
         <li><span class="ic"><i data-ic="list"></i></span><span>Cubre, entre otras cosas: asistencia médica hasta USD 60.000, medicamentos hasta USD 2.000, urgencias dentales hasta USD 500, pérdida de equipaje hasta USD 1.200 y vuelo demorado o cancelado (más de 6 horas) hasta USD 200.</span></li>
-        <li><span class="ic"><i data-ic="case"></i></span><span>Las pólizas se abren con los botones de arriba. Por si no hay internet, conviene guardarlas también en el móvil (en Archivos o en WhatsApp).</span></li>
+        <li><span class="ic"><i data-ic="case"></i></span><span>Las pólizas se abren con los botones de arriba y una clave de 6 números, y quedan guardadas en la app para verlas sin internet. La clave se pide solo la primera vez.</span></li>
       </ul>
     </div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="phone"></i></span>Teléfonos</h3><div id="tels"></div></div>
@@ -1228,53 +1240,54 @@ const STOPS=[["Miraflores","19 – 23 nov","Tu barrio: el hotel, el malecón y e
 const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, barrio] */
 const DAYS=[
- {d:19,c:"Miraflores",cs:["Miraflores"],t:"Llegada a Lima",w:"Vuelo de la tarde y traslado al hotel",it:[
-  ["✈️","Vuelo LA508 Santiago → Lima. Llegada al aeropuerto Jorge Chávez a las 22:11, hora de Lima (2 horas menos que en Chile).","Aeropuerto Internacional Jorge Chávez",0,"Miraflores"],
+ {d:19,c:"Miraflores",cs:["Miraflores"],t:"Llegada a Lima",w:"Vuelo de la tarde y traslado al hotel",g:"S/ 0 – 40 (si cenan algo al llegar)",it:[
+  ["🧳","17:30 (hora de Chile) en el aeropuerto de Santiago: 3 horas antes del vuelo, por ser internacional.","Aeropuerto Internacional Arturo Merino Benítez",0,"Miraflores"],
+  ["✈️","20:25 sale el vuelo LA508 Santiago → Lima (hora habitual; mirar la tarjeta de embarque). Llega a las 22:11, hora de Lima: allá son 2 horas menos que en Chile.","Aeropuerto Internacional Jorge Chávez",0,"Miraflores"],
   ["🚐","Al salir, el conductor del traslado los espera para llevarlos al hotel: entre 40 minutos y una hora hasta Miraflores.","",1,"Miraflores"],
-  ["🏨","Hotel José Antonio Executive, calle Colón 325, Miraflores. Teléfono +51 1 445 5228.","Jose Antonio Executive Calle Colon 325 Miraflores",2,"Miraflores"],
+  ["🏨","Hacia las 23:30, hotel José Antonio Executive, calle Colón 325, Miraflores. Teléfono +51 1 445 5228.","Jose Antonio Executive Calle Colon 325 Miraflores",2,"Miraflores"],
   ["🥪","Si llegan con hambre: La Lucha Sanguchería, en la avenida Larco, abre hasta tarde. Su sándwich de chicharrón es el clásico.","La Lucha Sangucheria Av Jose Larco 999 Miraflores",0,"Miraflores"]]},
- {d:20,c:"Barranco",cs:["Miraflores","Barranco","Centro histórico"],t:"Día gastronómico y Lima colonial",w:"Mercado, clase de ceviche en Cala y el centro histórico",it:[
+ {d:20,c:"Barranco",cs:["Miraflores","Barranco","Centro histórico"],t:"Día gastronómico y Lima colonial",w:"Mercado, clase de ceviche en Cala y el centro histórico",g:"S/ 30 – 70 (el almuerzo va incluido; aparte, bebidas, picarones y la cena)",it:[
   ["🚐","10:30 los recogen en el hotel para visitar un mercado limeño: frutas, ajíes y pescados. Prueben la chirimoya y la lúcuma.","",1,"Miraflores"],
   ["🐟","Hacia las 11:30, Cala, junto al mar: clase de ceviche y pisco sour, y almuerzo en la terraza mirando el Pacífico.","Cala Restaurante Costa Verde Barranco",1,"Barranco"],
   ["🚐","14:00 recogida en el hotel para el tour por el centro. Es compartido: la recogida puede retrasarse hasta 30 minutos.","",1,"Centro histórico"],
   ["🏛️","Casa Aliaga, una mansión colonial con más de cinco siglos de historia, considerada la casa más antigua de América.","Casa Aliaga Jiron de la Union 224 Lima",1,"Centro histórico"],
-  ["⛪","La Plaza Mayor, Patrimonio de la Humanidad, y la Catedral de Lima. Para entrar, mejor sin pantalones cortos ni camisetas sin mangas.","Catedral de Lima",1,"Centro histórico"],
+  ["⛪","La Plaza Mayor, Patrimonio de la Humanidad, y la Catedral de Lima. Para entrar, mejor sin shorts ni poleras sin mangas.","Catedral de Lima",1,"Centro histórico"],
   ["🖼️","Museo Larco, en una casona virreinal del siglo XVIII: 5.000 años de historia del antiguo Perú.","Museo Larco Pueblo Libre",1,"Centro histórico"],
-  ["🍩","De vuelta en Miraflores: picarones con miel en el carrito de Mary, en el Parque Kennedy (desde las 15:00), a pocos minutos del hotel.","Picarones Mary Parque Kennedy Miraflores",0,"Miraflores"]]},
- {d:21,c:"Miraflores",cs:["Miraflores","Centro histórico"],t:"Día libre y cena en Huaca Pucllana",w:"Malecón, tarde a su aire y cena a las 20:30",it:[
-  ["🌅","Sugerencia: mañana tranquila por el malecón de Miraflores, a tres cuadras del hotel: el Parque del Amor y los parapentes. Es llano y se hace en tramos cortos.","Parque del Amor Miraflores",0,"Miraflores"],
-  ["🐟","Almuerzo marino en Punto Azul, calle San Martín 595: ceviche y jalea. Solo abre a mediodía (11:00 – 16:00); el sábado, mejor llegar antes de la una.","Punto Azul San Martin 595 Miraflores",0,"Miraflores"],
-  ["☕","Tarde libre: descanso o piscina en el hotel, o un café en Larcomar mirando el mar.","Larcomar Miraflores",0,"Miraflores"],
-  ["🎶","Si tienen ganas, antes de cenar: Circuito Mágico del Agua, en el Parque de la Reserva (20 – 30 min en taxi). Fuentes con luces y música desde que oscurece, hacia las 18:30. Salgan de ahí a las 19:50 para llegar a la cena. Entradas en serpar.gob.pe.","Circuito Magico del Agua Parque de la Reserva Lima",3,"Centro histórico"],
-  ["🍽️","Cena en el restaurante Huaca Pucllana a las 20:30, a unos 10 minutos del hotel en taxi. De noche la pirámide está iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
- {d:22,c:"Barranco",cs:["Miraflores","Barranco"],t:"Día libre: Barranco",w:"Playa, almuerzo marino y el barrio más bonito de Lima",it:[
-  ["🏖️","Sugerencia: mañana sin prisa y, en taxi, al circuito de playas de la Costa Verde (Waikiki y Makaha), con surfistas todo el año. El agua está fría.","Playa Waikiki Miraflores",0,"Miraflores"],
-  ["🐟","Almuerzo en Pescados Capitales, avenida La Mar 1335: ceviches y tiraditos. El domingo abre hasta las 17:00; a las 14:30 hay menos gente.","Pescados Capitales Av La Mar 1335 Miraflores",0,"Miraflores"],
-  ["🚕","A Barranco en Uber o taxi de aplicación: unos 15 minutos desde el hotel.","",0,"Barranco"],
-  ["🌉","El Puente de los Suspiros y la Bajada de Baños, el rincón más bonito de Barranco. Es corto, aunque tiene escaleras.","Puente de los Suspiros Barranco",0,"Barranco"],
-  ["🖼️","Museo Pedro de Osma: arte virreinal en una mansión antigua. Abre el domingo, de 10:00 a 18:00.","Museo Pedro de Osma Barranco",3,"Barranco"],
-  ["🍩","Merienda en Pregón de las Once, jirón Tejada 105: postres limeños de antes, como el ranfañote. O picarones en El Tío Mario, junto al puente.","Pregon de las Once Jiron Tejada 105 Barranco",0,"Barranco"],
-  ["🧳","Vuelta temprano al hotel y maletas listas: mañana los recogen a las 08:00.","",0,"Miraflores"]]},
- {d:23,c:"Miraflores",cs:["Miraflores"],t:"Regreso a Santiago",w:"Recogida a las 08:00 y vuelo LA651",it:[
-  ["☕","Desayuno temprano en el hotel.","",0,"Miraflores"],
+  ["🍩","De vuelta en Miraflores, hacia las 18:30: picarones con miel en el carrito de Mary, en el Parque Kennedy, a pocos minutos del hotel.","Picarones Mary Parque Kennedy Miraflores",0,"Miraflores"]]},
+ {d:21,c:"Miraflores",cs:["Miraflores","Centro histórico"],t:"Día libre y cena en Huaca Pucllana",w:"Malecón, tarde a su aire y cena a las 20:30",g:"S/ 80 – 130 sin la cena; la cena en Huaca Pucllana, unos S/ 150 – 250 si no está pagada",b:"Si el sol del mediodía molesta: el malecón temprano o al atardecer, y la tarde bajo techo en Larcomar o descansando en el hotel.",it:[
+  ["🌅","10:00 Sugerencia: paseo tranquilo por el malecón de Miraflores, a tres cuadras del hotel: el Parque del Amor y los parapentes. Es plano y se hace en tramos cortos.","Parque del Amor Miraflores",0,"Miraflores"],
+  ["🐟","12:30 Almuerzo marino en Punto Azul, calle San Martín 595: ceviche y jalea. Solo abre a mediodía (11:00 – 16:00); el sábado se llena desde la una.","Punto Azul San Martin 595 Miraflores",0,"Miraflores"],
+  ["☕","15:00 Tarde libre: descanso o piscina en el hotel, o un café en Larcomar mirando el mar.","Larcomar Miraflores",0,"Miraflores"],
+  ["🎶","18:00 Si tienen ganas: Circuito Mágico del Agua, en el Parque de la Reserva (20 – 30 min en taxi). Fuentes con luces y música desde que oscurece. Salgan de ahí a las 19:50 para llegar a la cena. Entradas en serpar.gob.pe.","Circuito Magico del Agua Parque de la Reserva Lima",3,"Centro histórico"],
+  ["🍽️","20:30 Cena en el restaurante Huaca Pucllana, a unos 10 minutos del hotel en taxi (salir hacia las 20:10). De noche la pirámide está iluminada.","Restaurante Huaca Pucllana General Borgoño Miraflores",2,"Miraflores"]]},
+ {d:22,c:"Barranco",cs:["Miraflores","Barranco"],t:"Día libre: Barranco",w:"Playa, almuerzo marino y el barrio más bonito de Lima",g:"S/ 130 – 190 (almuerzo, museo, postres y taxis)",b:"Si hay garúa o mucho calor: más rato dentro del Museo Pedro de Osma y del MATE (Museo Mario Testino, en la misma avenida), y la playa vista desde el malecón.",it:[
+  ["🏖️","10:30 Sugerencia: mañana sin prisa y, en taxi, al circuito de playas de la Costa Verde (Waikiki y Makaha), con surfistas todo el año. El agua está fría.","Playa Waikiki Miraflores",0,"Miraflores"],
+  ["🐟","13:00 Almuerzo en Pescados Capitales, avenida La Mar 1335: ceviches y tiraditos. El domingo abre hasta las 17:00; hacia las 14:30 hay menos gente.","Pescados Capitales Av La Mar 1335 Miraflores",0,"Miraflores"],
+  ["🚕","15:15 A Barranco en Uber o taxi de aplicación: unos 15 minutos desde el hotel.","",0,"Barranco"],
+  ["🌉","15:30 El Puente de los Suspiros y la Bajada de Baños, el rincón más bonito de Barranco. Es corto, aunque tiene escaleras.","Puente de los Suspiros Barranco",0,"Barranco"],
+  ["🖼️","16:00 Museo Pedro de Osma: arte virreinal en una mansión antigua. Abre el domingo de 10:00 a 18:00.","Museo Pedro de Osma Barranco",3,"Barranco"],
+  ["🍩","17:30 Merienda en Pregón de las Once, jirón Tejada 105: postres limeños de antes, como el ranfañote. O picarones en El Tío Mario, junto al puente.","Pregon de las Once Jiron Tejada 105 Barranco",0,"Barranco"],
+  ["🧳","19:00 Vuelta al hotel y maletas listas: mañana los recogen a las 08:00.","",0,"Miraflores"]]},
+ {d:23,c:"Miraflores",cs:["Miraflores"],t:"Regreso a Santiago",w:"Recogida a las 08:00 y vuelo LA651",g:"S/ 0 – 30 (algo en el aeropuerto)",it:[
+  ["☕","07:00 Desayuno en el hotel.","",0,"Miraflores"],
   ["🚐","08:00 los recogen en el hotel para ir al aeropuerto.","",1,"Miraflores"],
-  ["✈️","Vuelo LA651 Lima → Santiago. Suele salir a las 12:55 y llegar hacia las 17:30, hora de Chile. Revisen la hora en la tarjeta de embarque.","Aeropuerto Internacional Jorge Chávez",4,"Miraflores"]]}];
+  ["✈️","12:55 vuelo LA651 Lima → Santiago (hora habitual; mirar la tarjeta de embarque). Llega hacia las 17:30, hora de Chile.","Aeropuerto Internacional Jorge Chávez",0,"Miraflores"]]}];
 const TAG=["","Incluido","Reservado","Con entrada","Por confirmar"];
 
 /* dónde comer: nombre, barrio, tipo, precio, nota, búsqueda */
 const R=[
- ["Punto Azul","Miraflores","marino","€€","Una de las cebicherías más queridas de Lima, con porciones grandes. Solo a mediodía; se llena.","Punto Azul San Martin 595 Miraflores"],
- ["Pescados Capitales","Miraflores","marino","€€","Ceviches y tiraditos con nombres de pecados capitales. Más tranquilo a las 14:30 que a la una.","Pescados Capitales Av La Mar 1335 Miraflores"],
- ["La Mar","Miraflores","marino","€€€","La cebichería de Gastón Acurio, entre las mejores de Latinoamérica. Solo almuerzos y sin reservas: el fin de semana hay cola desde las 11:30.","La Mar Cebicheria Av Mariscal La Mar 770 Miraflores"],
- ["Cala","Barranco","marino","€€€","Frente al mar. Ya incluido el viernes, con la clase de ceviche.","Cala Restaurante Costa Verde Barranco"],
- ["Huaca Pucllana","Miraflores","peruana","€€€","Cocina criolla junto a la pirámide iluminada. Ya reservado para el sábado a las 20:30.","Restaurante Huaca Pucllana General Borgoño Miraflores"],
- ["José Antonio","San Isidro","peruana","€€","Comida y dulces criollos desde hace más de 40 años. No tiene que ver con el hotel, aunque se llamen igual.","Restaurante Jose Antonio Bernardo Monteagudo 200 San Isidro"],
- ["La Lucha Sanguchería","Miraflores","calle","€","Sándwiches criollos (chicharrón, lechón) y jugos. Abre hasta muy tarde.","La Lucha Sangucheria Av Jose Larco 999 Miraflores"],
- ["Mercado N.º 1 de Surquillo","Surquillo","calle","€","Cruzando la Vía Expresa desde Miraflores: puestos de ceviche, jugos y frutas que no hay en Chile.","Mercado N 1 de Surquillo"],
- ["El Tío Mario","Barranco","calle","€","Anticuchos y picarones al lado del Puente de los Suspiros, desde 1987.","El Tio Mario Jiron Zepita 214 Barranco"],
- ["Picarones Mary","Miraflores","dulce","€","El carrito de picarones del Parque Kennedy, con más de 20 años. Desde las 15:00.","Picarones Mary Parque Kennedy Miraflores"],
- ["Pregón de las Once","Barranco","dulce","€","Postres limeños de siempre: ranfañote, mazamorra, arroz con leche.","Pregon de las Once Jiron Tejada 105 Barranco"],
- ["La Panetteria","Barranco","dulce","€","Panes artesanales y café; prueben el queque de pera.","La Panetteria Av Grau 369 Barranco"]];
+ ["Punto Azul","Miraflores","marino","$$","Una de las cebicherías más queridas de Lima, con porciones grandes. Solo a mediodía; se llena.","Punto Azul San Martin 595 Miraflores"],
+ ["Pescados Capitales","Miraflores","marino","$$","Ceviches y tiraditos con nombres de pecados capitales. Más tranquilo a las 14:30 que a la una.","Pescados Capitales Av La Mar 1335 Miraflores"],
+ ["La Mar","Miraflores","marino","$$$","La cebichería de Gastón Acurio, entre las mejores de Latinoamérica. Solo almuerzos y sin reservas: el fin de semana hay fila desde las 11:30.","La Mar Cebicheria Av Mariscal La Mar 770 Miraflores"],
+ ["Cala","Barranco","marino","$$$","Frente al mar. Ya incluido el viernes, con la clase de ceviche.","Cala Restaurante Costa Verde Barranco"],
+ ["Huaca Pucllana","Miraflores","peruana","$$$","Cocina criolla junto a la pirámide iluminada. Ya reservado para el sábado a las 20:30.","Restaurante Huaca Pucllana General Borgoño Miraflores"],
+ ["José Antonio","San Isidro","peruana","$$","Comida y dulces criollos desde hace más de 40 años. No tiene que ver con el hotel, aunque se llamen igual.","Restaurante Jose Antonio Bernardo Monteagudo 200 San Isidro"],
+ ["La Lucha Sanguchería","Miraflores","calle","$","Sándwiches criollos (chicharrón, lechón) y jugos. Abre hasta muy tarde.","La Lucha Sangucheria Av Jose Larco 999 Miraflores"],
+ ["Mercado N.º 1 de Surquillo","Surquillo","calle","$","Cruzando la Vía Expresa desde Miraflores: puestos de ceviche, jugos y frutas que no hay en Chile.","Mercado N 1 de Surquillo"],
+ ["El Tío Mario","Barranco","calle","$","Anticuchos y picarones al lado del Puente de los Suspiros, desde 1987.","El Tio Mario Jiron Zepita 214 Barranco"],
+ ["Picarones Mary","Miraflores","dulce","$","El carrito de picarones del Parque Kennedy, con más de 20 años. Desde las 15:00.","Picarones Mary Parque Kennedy Miraflores"],
+ ["Pregón de las Once","Barranco","dulce","$","Postres limeños de siempre: ranfañote, mazamorra, arroz con leche.","Pregon de las Once Jiron Tejada 105 Barranco"],
+ ["La Panetteria","Barranco","dulce","$","Panes artesanales y café; prueben el queque de pera.","La Panetteria Av Grau 369 Barranco"]];
 const RT={marino:["Ceviche y comida marina","food"],peruana:["Cocina peruana","food"],calle:["Mercados y al paso","food"],dulce:["Postres y dulces","cake"]};
 
 /* lugares del mapa: nombre, lat, lon, tipo, nota, búsqueda */
@@ -1328,30 +1341,31 @@ function T(){if(SIM)return{ph:"trip",d:SIM};const n=limaNow();if(n<start)return{
 
 /* ---------- tiempo: previsión real (Open-Meteo) o valores normales de noviembre ---------- */
 const GEO=[-12.1211,-77.0297],NORM={hi:22,lo:17,code:3,pp:5,sr:"5:35",ss:"18:15"};
-const WMO=c=>c===0?["sunny","Despejado"]:c<=2?["psun","Algo nuboso"]:c===3?["cloud","Nublado"]:c<=48?["fog","Neblina"]:c<=57?["rain","Llovizna"]:c<=67?["rain","Lluvia"]:c<=82?["rain","Chubascos"]:["rain","Tormenta"];
+const WMO=c=>c===0?["sunny","Despejado"]:c<=2?["psun","Algo nuboso"]:c===3?["cloud","Nublado"]:c<=48?["fog","Neblina"]:c<=57?["fog","Garúa (llovizna muy fina)"]:c<=67?["rain","Lluvia"]:c<=82?["rain","Chubascos"]:["rain","Tormenta"];
 let WXD=LS("wxd");
 function dayWx(x){const r=WXD&&WXD.d&&WXD.d[iso(x.d)];return r?{code:r[0],hi:Math.round(r[1]),lo:Math.round(r[2]),pp:r[3]==null?null:r[3],real:1}:{...NORM,real:0}}
 function ropa(w){const p=[];
-  if(w.hi>=25)p.push("Ropa fresca de manga corta y una chaqueta fina para la noche");
-  else if(w.hi>=20)p.push("Manga corta o manga larga fina, y un polerón o chaqueta liviana para la noche junto al mar");
-  else p.push("Ropa en capas y una chaqueta para la tarde y la noche");
-  if(w.pp!=null&&w.pp>=40)p.push("un paraguas pequeño por si acaso");
+  if(w.hi>=25)p.push("Ropa fresca de manga corta y un polerón delgado para la noche");
+  else if(w.hi>=20)p.push("Manga corta o manga larga delgada, y un polerón para la noche junto al mar");
+  else p.push("Ropa en capas y un polerón o cortaviento para la tarde y la noche");
+  if(w.code>=61&&w.pp!=null&&w.pp>=40)p.push("un paraguas pequeño por si acaso");
   return p.join(" y ")+". Bloqueador aunque esté nublado."}
-function ropaC(w){return (w.hi>=25?"Ropa fresca":w.hi>=20?"Ligera + polerón":"Capas y chaqueta")+" · bloqueador"}
+function ropaC(w){return (w.hi>=25?"Ropa fresca":w.hi>=20?"Liviana + polerón":"Capas y polerón")+" · bloqueador"+(w.hi>=27?" · agua":"")}
 async function loadWx(){if(WXD&&Date.now()-WXD.at<2*3600e3)return;
   try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${GEO[0]}&longitude=${GEO[1]}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FLima&past_days=7&forecast_days=16`);
     if(!r.ok)return;const j=await r.json(),dd=j.daily,out={at:Date.now(),d:{}};dd.time.forEach((t,i)=>out.d[t]=[dd.weather_code[i],dd.temperature_2m_max[i],dd.temperature_2m_min[i],dd.precipitation_probability_max[i]]);
     WXD=out;SS("wxd",WXD);if(!$("s-tiempo").hidden)renderWx();if(!$("s-viaje").hidden)renderHome()}catch(e){}}
 function renderWx(){const t=T(),today=t.ph==="trip"?dayOf(t.d):DAYS[0];
   const w=dayWx(today),[ic,txt]=WMO(w.code);
-  $("wxtoday").innerHTML=`<div class="wc" style="width:100%"><div class="cty">${ico("pin",2)}Lima · Miraflores</div><div class="when">${t.ph==="trip"?"Hoy, ":""}${wdl(today.d)} ${today.d} de ${MES}</div><div class="mid"><span class="tmp">${w.hi}°</span><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${P[ic]}</svg></div><div class="cond">${w.real?txt:"Lo normal en noviembre: nublado por la mañana, sol por la tarde"}</div><div class="hl">↑ ${w.hi}° / ↓ ${w.lo}°${w.pp!=null?` · lluvia ${w.pp}%`:""}</div><p class="wtip">${ico("shirt",1.8)}<span>${ropa(w)}</span></p><div class="grid3"><span><b>${NORM.sr}</b>amanece</span><span><b>${NORM.ss}</b>anochece</span><span><b>${w.real?"Previsión":"Normal"}</b>${w.real?"real":"de noviembre"}</span></div></div>`;
+  $("wxtoday").innerHTML=`<div class="wc" style="width:100%"><div class="cty">${ico("pin",2)}Lima · Miraflores</div><div class="when">${t.ph==="trip"?"Hoy, ":""}${wdl(today.d)} ${today.d} de ${MES}</div><div class="mid"><span class="tmp">${w.hi}°</span><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${P[ic]}</svg></div><div class="cond">${w.real?txt:"Lo normal en noviembre: nublado en la mañana, sol en la tarde"}</div><div class="hl">↑ ${w.hi}° / ↓ ${w.lo}°${w.pp!=null?` · lluvia ${w.pp}%`:""}</div><p class="wtip">${ico("shirt",1.8)}<span>${ropa(w)}</span></p><div class="grid3"><span><b>${NORM.sr}</b>amanece</span><span><b>${NORM.ss}</b>anochece</span><span><b>${w.real?"Previsión":"Normal"}</b>${w.real?"real":"de noviembre"}</span></div></div>`;
   $("wl").innerHTML=DAYS.map(x=>{const v=dayWx(x),[i2,t2]=WMO(v.code);return `<div class="wr${t.ph==="trip"&&t.d===x.d?" today":""}"><span class="db"><b>${x.d}</b><small>${wd(x.d)}</small></span><span class="wt"><b>${esc(x.t)}${v.real?` · ${t2}`:""}</b><small>${ropaC(v)}</small></span><span class="wv2">${ico(i2,1.7)}<b>${v.hi}°</b><small>${v.lo}°${v.pp!=null?` · ${ico("drop",2)}${v.pp}%`:""}</small></span></div>`}).join("");
   const real=DAYS.some(x=>dayWx(x).real);
-  $("wxsrc").textContent=real?`Previsión actualizada a las ${new Date(WXD.at).toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit"})}. Los días lejanos pueden cambiar.`:"Sin conexión: se muestran los valores normales de noviembre. Con internet aparece la previsión real.";
-  $("ropa").innerHTML=[["shirt","En Lima casi nunca llueve. Las mañanas suelen ser grises y húmedas, y por la tarde sale el sol."],["case","Un polerón o chaqueta liviana para la noche y para el malecón, donde corre viento."],["sunny","Bloqueador, gafas de sol y gorro: el sol pega fuerte aunque el cielo esté gris."],["church","Para la Catedral y las iglesias: nada de pantalones cortos ni camisetas sin mangas."],["shoe","Zapatos cómodos: en el centro y en Barranco hay veredas irregulares y algunas escaleras."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}
+  $("wxsrc").textContent=real?`Previsión actualizada a las ${new Date(WXD.at).toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit",hour12:false})}. Los días lejanos pueden cambiar.`:"Sin conexión: se muestran los valores normales de noviembre. Con internet aparece la previsión real.";
+  const rd=DAYS.map(dayWx).filter(v=>v.real),mx=rd.length?Math.max(...rd.map(v=>v.hi)):0,gar=rd.some(v=>v.code>=51&&v.code<=57);
+  $("ropa").innerHTML=[...(mx>=26?[["sunny",`Estos días la previsión da más calor de lo normal en Lima: hasta ${mx}° (lo habitual en noviembre son unos 22°). Ropa fresca, agua siempre a mano y evitar el sol fuerte del mediodía.`]]:[]),["shirt",gar?"En Lima casi nunca llueve de verdad: lo que cae a veces es garúa, una llovizna muy fina que moja poco y no necesita paraguas.":"En Lima casi nunca llueve. Las mañanas suelen ser grises y húmedas, y en la tarde sale el sol."],["case","Un polerón o cortaviento para la noche y para el malecón, donde corre viento."],["sunny","Bloqueador, lentes de sol y jockey: el sol pega fuerte aunque el cielo esté gris."],["church","Para la Catedral y las iglesias: nada de shorts ni poleras sin mangas."],["shoe","Zapatos cómodos: en el centro y en Barranco hay veredas irregulares y algunas escaleras."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}
 
 /* ---------- banner ---------- */
-$("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+`<div class="rt">${STOPS.map((_,i)=>`<span style="left:${i/(STOPS.length-1)*100}%"></span>`).join("")}<i class="pl">${ico("plane").replace('fill="none"','fill="currentColor"').replace(/stroke="currentColor"/,'stroke="none"')}</i></div>`+STOPS.map(([c])=>`<span class="cn">${c.toUpperCase()}</span>`).join("");
+$("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+`<div class="rt">${STOPS.map((_,i)=>`<span style="left:${i/(STOPS.length-1)*100}%"></span>`).join("")}<i class="pl">${ico("plane").replace('fill="none"','fill="currentColor"').replace(/stroke="currentColor"/,'stroke="none"')}</i></div>`+STOPS.map(([c])=>`<span class="cn">${c.split(" ")[0].toUpperCase()}</span>`).join("");
 
 /* ---------- inicio ---------- */
 function fitHoy(){const sv=$("s-viaje"),car=$("car");if(sv.hidden||!car.children.length)return;const cs=[...car.children];
@@ -1365,14 +1379,14 @@ const TASKS=[
  ["doc","Cédula de identidad o pasaporte vigente de los tres (desde Chile se puede entrar a Perú con la cédula)"],
  ["tarj","Tarjetas avisadas para usarlas en el extranjero"],
  ["efe","Algo de efectivo en soles para taxis, propinas y carritos"],
- ["dat","Datos en el móvil (roaming o chip) y Uber o Cabify instalados"],
- ["seg","Seguro de viaje con Interassist: la póliza de cada uno guardada en el móvil (están en Útil → Seguro de viaje)"],
-  ["ropa","Ropa ligera, un polerón, bloqueador y gafas de sol"],
+ ["dat","Datos en el celular (roaming o chip) y Uber o Cabify instalados"],
+ ["seg","Seguro de viaje con Interassist: la póliza de cada uno guardada en el celular (están en Útil → Seguro de viaje)"],
+  ["ropa","Ropa liviana, un polerón, bloqueador y lentes de sol"],
  ["enc","Cargadores: los enchufes chilenos suelen servir; un adaptador universal por si acaso"]];
 let TK=LS("tareas")||{};
 function renderHome(){
   const t=T();let h="";
-  if(t.ph==="before"){const done=TASKS.filter(([k])=>TK[k]).length;h=`<div class="box hoy pre"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>${t.left<=1?"Mañana empieza el viaje":`Faltan ${t.left} días`}</h3><p>Llegada a Lima el jueves 19 a las 22:11. El traslado al hotel ya está incluido.</p><div class="bar"><i style="width:${done/TASKS.length*100}%"></i></div><p style="margin:0;font-size:13.5px">Antes de salir: <b>${done} de ${TASKS.length}</b> listos</p><div class="acts"><button class="btn" type="button" data-go="util">Ver la lista</button><button class="btn ghost" type="button" data-open="Miraflores" data-day="19">El primer día</button></div></div>`}
+  if(t.ph==="before"){const done=TASKS.filter(([k])=>TK[k]).length;h=`<div class="box hoy pre"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>${t.left<=1?"Mañana empieza el viaje":`Faltan ${t.left} días`}</h3><p>Jueves 19: en el aeropuerto de Santiago a las 17:30, el vuelo LA508 sale hacia las 20:25 y llega a Lima a las 22:11 (hora de Lima). El traslado al hotel ya está incluido.</p><div class="bar"><i style="width:${done/TASKS.length*100}%"></i></div><p style="margin:0;font-size:13.5px">Antes de salir: <b>${done} de ${TASKS.length}</b> listos</p><div class="acts"><button class="btn" type="button" data-go="util">Ver la lista</button><button class="btn ghost" type="button" data-open="Miraflores" data-day="19">El primer día</button></div></div>`}
   else if(t.ph==="trip"){const x=dayOf(t.d);if(x){const w=dayWx(x),[ic]=WMO(w.code);h=`<div class="box hoy"><h3 class="bh"><span class="bi">${ico("sunny",2)}</span>Hoy · ${wdl(x.d)} ${x.d} de ${MES}</h3>
     <p class="ht">${esc(x.t)}</p><ul class="list">${x.it.filter(i=>i[0]!=="ℹ️").slice(0,3).map(([i,tx])=>`<li><span class="ic">${ico(EM[i])}</span><span>${esc(tx)}</span></li>`).join("")}</ul>
     <button type="button" class="hw" data-go="tiempo">${ico(ic,1.8)}<span><b>${w.hi}° / ${w.lo}°</b> · ${ropaC(w)}</span></button>
@@ -1404,7 +1418,7 @@ function openCity(c,d){
   const nr=R.filter(r=>r[1]===c).length;$("stats").style.gridTemplateColumns=nr?"":"repeat(2,minmax(0,1fr))";$("stats").innerHTML=`<div><small>Días</small><b>${days.length}</b></div><div><small>Planes</small><b>${its.length}</b></div>${nr?`<div><small>Para comer</small><b>${nr}</b></div>`:""}`;
   $("cdays").innerHTML=shown.map(x=>{const i=DAYS.indexOf(x),pv=DAYS[i-1],nx=DAYS[i+1];return `<article class="day${x.d===d?" open":""}${t.ph==="trip"&&t.d===x.d?" today":""}" id="d${x.d}"><button type="button" class="dh" aria-expanded="${x.d===d}"><span class="db"><b>${x.d}</b><small>${wd(x.d)}</small></span><span class="t"><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det"><ul class="steps">${x.it.map((it,j)=>{const nc=it[4]!==(x.it[j-1]||[])[4]&&x.cs.length>1;return (nc?`<li class="cty" style="--c:${C[it[4]].c}"><i></i>${it[4]}</li>`:"")+plan(it)}).join("")}</ul>
-  <div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+pv.d:""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+nx.d:""} →</button></div></div></article>`}).join("");
+  ${x.g?`<p class="dg2">${ico("coin",2)}<span><b>Gasto aproximado por persona:</b> ${esc(x.g)}</span></p>`:""}${x.b?`<p class="dg2">${ico("umb",2)}<span><b>Plan B:</b> ${esc(x.b)}</span></p>`:""}<div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+pv.d:""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+nx.d:""} →</button></div></div></article>`}).join("");
   fixImgs($("hero"));
   if(d!==shown[0].d)setTimeout(()=>{const el=$("d"+d);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})},150);
 }
@@ -1415,20 +1429,21 @@ $("s-city").addEventListener("click",e=>{
 
 /* ---------- mapa (Leaflet + OpenStreetMap; sin conexión, costa dibujada) ---------- */
 const SEA=[[-11.95,-77.22],[-11.98,-77.14],[-12.06,-77.15],[-12.075,-77.165],[-12.078,-77.135],[-12.081,-77.10],[-12.087,-77.085],[-12.094,-77.07],[-12.104,-77.057],[-12.115,-77.047],[-12.126,-77.0405],[-12.134,-77.035],[-12.145,-77.0295],[-12.158,-77.026],[-12.168,-77.03],[-12.170,-77.045],[-12.26,-77.045],[-12.26,-77.22]];
-let LM=null,MK=[],mk="",mv="sur",tilesOk=false;
+let LM=null,MK=[],mk="",mv="mir",tilesOk=false;
 const pinHtml=(i,p)=>`<span style="background:${PK[p[3]][1]}">${p[3]==="hotel"?"H":i}</span>`;
 const popHtml=p=>`<div class="lpop"><b>${esc(p[0])}</b><small>${esc(p[4])}</small><a class="btn" href="${route(p[5])}" target="_blank" rel="noopener">Cómo llegar</a></div>`;
 function initMap(){if(LM||!window.L)return;
-  LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true});LM.attributionControl.setPrefix(false);
+  LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true,dragging:!L.Browser.mobile,touchZoom:true});LM.attributionControl.setPrefix(false);
   const sea=L.polygon(SEA,{stroke:false,fillColor:"#a9cfdc",fillOpacity:1,interactive:false}).addTo(LM);
   const tl=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:"abc",maxZoom:19,attribution:"© OpenStreetMap"}).addTo(LM);
   tl.on("tileload",()=>{if(!tilesOk){tilesOk=true;LM.removeLayer(sea);$("mapw").classList.add("tiles")}});
-  MK=PL.map((p,i)=>L.marker([p[1],p[2]],{icon:L.divIcon({className:"lpin"+(p[3]==="hotel"?" h":""),html:pinHtml(i,p),iconSize:[32,32],iconAnchor:[16,16],popupAnchor:[0,-14]}),title:p[0],riseOnHover:true,zIndexOffset:p[3]==="hotel"?1000:0}).bindPopup(popHtml(p),{maxWidth:240,autoPanPadding:[20,20]}));
+  MK=PL.map((p,i)=>L.marker([p[1],p[2]],{icon:L.divIcon({className:"lpin"+(p[3]==="hotel"?" h":""),html:pinHtml(i,p),iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:p[0],riseOnHover:true,zIndexOffset:p[3]==="hotel"?1000:0}).bindPopup(popHtml(p),{maxWidth:240,autoPanPadding:[20,20]}));
   MK.forEach(m=>m.addTo(LM))}
-function fitView(){if(!LM)return;const pts=PL.filter((p,i)=>(mv==="lima"||p[1]<-12.098)&&(!mk||p[3]===mk||p[3]==="hotel")).map(p=>[p[1],p[2]]);LM.fitBounds(pts,{padding:[28,28],maxZoom:16})}
+const INV={mir:p=>p[1]<-12.098&&p[1]>-12.138,bar:p=>p[1]<-12.138,lima:()=>true};
+function fitView(){if(!LM)return;const pts=PL.filter(p=>(INV[mv](p)||(mv==="mir"&&p[3]==="hotel"))&&(!mk||p[3]===mk||p[3]==="hotel")).map(p=>[p[1],p[2]]);if(pts.length)LM.fitBounds(pts,{padding:[30,30],maxZoom:17})}
 function applyFilter(){MK.forEach((m,i)=>{const on=!mk||PL[i][3]===mk||PL[i][3]==="hotel";if(on&&!LM.hasLayer(m))m.addTo(LM);if(!on&&LM.hasLayer(m))LM.removeLayer(m)})}
 function renderMap(){
-  $("mchips").innerHTML=[["sur","Miraflores y Barranco"],["lima","Toda Lima"]].map(([k,l])=>`<button type="button" data-mv="${k}" class="${mv===k?"on":""}" style="--c:transparent">${l}</button>`).join("")+`<span style="flex-basis:100%;height:0"></span>`+[["","Todo","var(--steel2)"],["plan","Planes",PK.plan[1]],["comer","Comer",PK.comer[1]]].map(([k,l,c])=>`<button type="button" data-mk="${k}" class="${mk===k?"on":""}" style="--c:${c}"><i></i>${l}</button>`).join("");
+  $("mchips").innerHTML=[["mir","Miraflores"],["bar","Barranco"],["lima","Toda Lima"]].map(([k,l])=>`<button type="button" data-mv="${k}" class="${mv===k?"on":""}" style="--c:transparent">${l}</button>`).join("")+`<span style="flex-basis:100%;height:0"></span>`+[["","Todo","var(--steel2)"],["plan","Planes",PK.plan[1]],["comer","Comer",PK.comer[1]]].map(([k,l,c])=>`<button type="button" data-mk="${k}" class="${mk===k?"on":""}" style="--c:${c}"><i></i>${l}</button>`).join("");
   $("plist").innerHTML=PL.map((p,i)=>`<li data-pi="${i}" style="--c:${PK[p[3]][1]}"><span class="nu">${p[3]==="hotel"?"H":i}</span><span><b>${esc(p[0])}</b><small>${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(p[0])}">${ico("go",2)}</a></li>`).join("");
   if(!window.L){$("mapw").innerHTML=`<p class="note" style="padding:20px">El mapa no se pudo cargar. Abajo están todos los lugares con su «Cómo llegar».</p>`;return}
   requestAnimationFrame(()=>{initMap();LM.invalidateSize();applyFilter();fitView()})}
@@ -1449,19 +1464,19 @@ function renderTasks(){const done=TASKS.filter(([k])=>TK[k]).length;$("tcnt").te
   $("tlist").innerHTML=TASKS.map(([k,tx])=>`<label class="chk"><input type="checkbox" data-tk="${k}"${TK[k]?" checked":""}><span>${esc(tx)}</span></label>`).join("")}
 $("tlist").addEventListener("change",e=>{const i=e.target.closest("[data-tk]");if(!i)return;TK[i.dataset.tk]=i.checked;SS("tareas",TK);renderTasks()});
 $("legs").innerHTML=[
- ["plane","Jue 19 · 22:11","Llegada en el vuelo LA508 desde Santiago","Traslado incluido"],
+ ["case","Jue 19 · 17:30","Estar en el aeropuerto de Santiago (3 horas antes)","Hora de Chile"],["plane","Jue 19 · 20:25","Sale el vuelo LA508 a Lima (hora habitual)","Hora de Chile"],["plane","Jue 19 · 22:11","Llega a Lima. Los espera el traslado al hotel","Hora de Lima · incluido"],
  ["van","Vie 20 · 10:30","Recogida en el hotel: mercado y Cala","Incluido"],
  ["van","Vie 20 · 14:00","Recogida en el hotel: tour del centro (hasta 30 min de margen)","Incluido"],
  ["car","Sáb 21 · 20:30","Cena en Huaca Pucllana: salir del hotel hacia las 20:10","En taxi, 10 min"],
  ["van","Lun 23 · 08:00","Recogida en el hotel hacia el aeropuerto","Incluido"],
- ["plane","Lun 23 · 12:55","Vuelo LA651 a Santiago (hora habitual)","Ver tarjeta de embarque"]].map(([i,a,b,c])=>`<li><span class="ic">${ico(i)}</span><span><b>${a}</b><small>${b}</small></span><span class="w">${c}</span></li>`).join("");
+ ["plane","Lun 23 · 12:55","Vuelo LA651 a Santiago (hora habitual); llega hacia las 17:30 hora de Chile","Ver tarjeta de embarque"]].map(([i,a,b,c])=>`<li><span class="ic">${ico(i)}</span><span><b>${a}</b><small>${b}</small></span><span class="w">${c}</span></li>`).join("");
 $("mover").innerHTML=[
  ["car","Mejor pedir el taxi por aplicación (Uber, Cabify o InDrive) que pararlo en la calle: el precio queda fijado antes de subir."],
  ["pin","Tiempos aproximados desde el hotel: Barranco 10–15 min · Huaca Pucllana 10 min · Circuito Mágico del Agua 20–30 min · Centro 30–45 min."],
  ["info","Entre las 7:30 y las 9:30 y de 17:30 a 20:00 el tráfico es muy lento: cuenten con más tiempo."],
  ["walk","Por Miraflores se puede ir a pie: el malecón y el Parque Kennedy están a pocas cuadras del hotel."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
 const telA=n=>`<a class="tl" href="tel:${n.replace(/[^+\d]/g,"")}"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>${n}</a>`,waA=u=>`<a class="wa" href="${u}" target="_blank" rel="noopener">WhatsApp</a>`;
-$("tels").innerHTML=[["Panam, la agencia","Asistencia las 24 horas","+56 9 8839 4246","https://wa.me/56988394246"],["Interassist, el seguro de viaje","Central operativa · vouchers 677989, 677994 y 677995","+54 9 11 6540-9429","https://wa.me/5491165409429"],["Hotel José Antonio Executive","Recepción","+51 1 445 5228"],["Policía","Emergencias","105"],["Bomberos","Emergencias","116"],["Ambulancia (SAMU)","Emergencias","106"]].map(([a,b,c,u])=>`<div class="tel"><span>${a}<small>${b}</small></span><span class="tn">${telA(c)}${u?waA(u):""}</span></div>`).join("");
+$("tels").innerHTML=[["Tu viaje, diseñado a mano","Para cualquier duda o cambio en la app","+34 652 058 047","https://wa.me/34652058047"],["Panam, la agencia","Asistencia las 24 horas","+56 9 8839 4246","https://wa.me/56988394246"],["Interassist, el seguro de viaje","Central operativa · vouchers 677989, 677994 y 677995","+54 9 11 6540-9429","https://wa.me/5491165409429"],["Interassist Llamadas","Por cobrar desde Perú · línea 1","+54 11 5352-9130"],["Interassist Llamadas","Por cobrar desde Perú · línea 2","+54 11 5352-9131"],["Hotel José Antonio Executive","Recepción","+51 1 445 5228"],["Policía","Emergencias","105"],["Bomberos","Emergencias","116"],["Ambulancia (SAMU)","Emergencias","106"]].map(([a,b,c,u])=>`<div class="tel"><span>${a}<small>${b}</small></span><span class="tn">${telA(c)}${u?waA(u):""}</span></div>`).join("");
 /* monedas: por defecto, valores de mediados de noviembre de 2026; con internet se actualizan */
 let FX=LS("fx")||{at:0,PEN:3.40,CLP:999};
 const num=s=>{s=String(s).trim().replace(/\s/g,"");if(!s)return NaN;if(/,\d{1,2}$/.test(s))s=s.replace(/\./g,"").replace(",",".");else s=s.replace(/[.,](?=\d{3}(\D|$))/g,"");return parseFloat(s)};
@@ -1472,6 +1487,17 @@ $("fxq").innerHTML=[10,20,50,100].map(n=>`<button type="button" data-q="${n}">S/
 $("fxq").onclick=e=>{const b=e.target.closest("[data-q]");if(!b)return;$("fxPEN").value=b.dataset.q;conv("PEN")};
 function fxNote(){const p=FX.CLP/FX.PEN;$("fxsrc").textContent=`1 sol ≈ ${Math.round(p)} pesos chilenos · 1 dólar ≈ ${FX.PEN.toFixed(2)} soles. ${FX.at?`Cambio actualizado el ${new Date(FX.at).toLocaleDateString("es-CL",{day:"numeric",month:"long"})}.`:"Cambio de mediados de noviembre; con internet se actualiza."} Es orientativo: el banco aplica su propio cambio y comisiones.`}
 async function loadFx(){if(FX.at&&Date.now()-FX.at<12*3600e3)return;try{const r=await fetch("https://open.er-api.com/v6/latest/USD");if(!r.ok)return;const j=await r.json();if(j.rates&&j.rates.PEN&&j.rates.CLP){FX={at:Date.now(),PEN:j.rates.PEN,CLP:j.rates.CLP};SS("fx",FX);fxNote()}}catch(e){}}
+
+/* pólizas cifradas: se abren con la clave y quedan en el celular */
+let polPend="";
+async function openPol(v,pin){const r=await fetch(`polizas/poliza-${v}.bin`);if(!r.ok)throw new Error("net");const buf=new Uint8Array(await r.arrayBuffer());
+  const km=await crypto.subtle.importKey("raw",new TextEncoder().encode(pin),"PBKDF2",false,["deriveKey"]);
+  const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:buf.slice(0,16),iterations:200000,hash:"SHA-256"},km,{name:"AES-GCM",length:256},false,["decrypt"]);
+  const pdf=await crypto.subtle.decrypt({name:"AES-GCM",iv:buf.slice(16,28)},key,buf.slice(28));
+  const url=URL.createObjectURL(new Blob([pdf],{type:"application/pdf"}));const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+async function tryPol(v,pin){$("pinmsg").textContent="Abriendo…";try{await openPol(v,pin);SS("pin",pin);$("pinf").hidden=true;$("pinmsg").textContent=""}catch(e){$("pinmsg").textContent=e.message==="net"?"No se pudo cargar la póliza: hace falta internet la primera vez.":"Clave incorrecta. Revísala e inténtalo otra vez.";$("pinf").hidden=false;if(e.message!=="net")SS("pin","")}}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-pol]");if(!a)return;e.preventDefault();polPend=a.dataset.pol;const pin=LS("pin");if(pin)tryPol(polPend,pin);else{$("pinf").hidden=false;$("pinmsg").textContent="";$("pinin").focus()}});
+$("pinf").onsubmit=e=>{e.preventDefault();const p=$("pinin").value.trim();if(p&&polPend)tryPol(polPend,p)};
 function renderU(){renderTasks();fxNote();loadFx()}
 
 /* ---------- pie con el tiempo de ahora ---------- */
