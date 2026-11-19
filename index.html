@@ -400,6 +400,28 @@ button.ft{font:inherit}
 .cn{font-size:30px}
 @media (prefers-reduced-motion:reduce){.pl{animation:none;left:0}}
 /* mapa */
+/* «Dónde estoy»: botón redondo y punto azul con haz de luz */
+.mebtn{display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:12px;background:#fff;color:#2f6fe0;box-shadow:0 1px 4px rgb(0 0 0/.25);cursor:pointer}
+.mebtn[data-st="buscando"] svg{animation:mebl 1s ease-in-out infinite}
+.mebtn[data-st="ok"]{color:#fff;background:#2f80ff}
+@keyframes mebl{50%{opacity:.25}}
+.mepin{background:none;border:0}
+.me{position:relative;width:44px;height:44px}
+.me .dot{position:absolute;left:15px;top:15px;width:14px;height:14px;border-radius:50%;background:#2f80ff;border:2.5px solid #fff;box-shadow:0 1px 4px rgb(0 0 0/.35)}
+.me .dot::after{content:"";position:absolute;inset:-9px;border-radius:50%;background:rgb(47 128 255/.25);animation:mepu 2.4s ease-out infinite;z-index:-1}
+@keyframes mepu{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.me .merot{position:absolute;inset:0;transition:transform .3s ease-out;opacity:0}
+.me.hd .merot{opacity:1}.me.hd .dot{opacity:0}
+.me .arw{width:44px;height:44px;display:block;filter:drop-shadow(0 1px 3px rgb(0 0 0/.4))}
+@media (prefers-reduced-motion:reduce){.me .dot::after{animation:none}}
+.memsg{position:absolute;z-index:1000;left:10px;right:10px;bottom:24px;display:grid;grid-template-columns:18px minmax(0,1fr) 26px;gap:9px;align-items:center;padding:9px 8px 9px 12px;border-radius:14px;
+  background:rgb(20 24 32/.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#f2f4f8;font-size:13px;line-height:1.35;box-shadow:0 6px 18px rgb(0 0 0/.3);cursor:pointer;
+  opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.memsg.in{opacity:1;transform:none}
+.memsg>svg{color:#8ec5ff}
+.memsg button{display:grid;place-items:center;width:26px;height:26px;padding:0;border:0;border-radius:50%;background:rgb(255 255 255/.12);color:#fff;cursor:pointer}
+.thx,.tha{display:grid;place-items:center;padding:0;line-height:0}.thx svg,.tha svg{display:block}
+
 .pinf{margin-top:10px;display:grid;gap:6px;border:1px solid var(--line2);border-radius:14px;padding:10px 12px;background:var(--fill)}.pinf label{font-size:13.5px;font-weight:700}.pinf .note{font-size:13px;margin:0}
 
 .rsv{list-style:none;margin:0;padding:0}.rsv li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.rsv li:last-child{border:0}.rsv b{display:block;font-size:14.5px;line-height:1.25}.rsv small{display:block;color:var(--soft);font-size:12.5px}.rsv .st{white-space:normal;text-align:center;max-width:9em}
@@ -1153,9 +1175,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="ptl"><h1>Mapa</h1><p>Los lugares del viaje. Toca un punto para ver qué es.</p></div>
   <div class="pad">
     <div class="mchips" id="mchips"></div>
-    <div class="mapw" id="mapw"></div>
+    <div class="mapw" id="mapw"><div class="memsg" id="memsg" hidden role="status"></div></div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="pin"></i></span>Todos los lugares</h3><ul class="plist" id="plist"></ul></div>
-    <p class="note" style="margin-top:12px;font-size:13px">Toca un punto para ver qué es. En el celular, el mapa se mueve con dos dedos (con uno se sigue bajando la página). «Ver en Google Maps» abre el lugar en Google Maps.</p>
+    <p class="note" style="margin-top:12px;font-size:13px">Toca «Dónde estoy» (el botón de arriba a la derecha del mapa) para ver tu posición: el punto azul usa el GPS y la flecha la brújula del celular, también sin internet. Toca un punto para ver qué es. En el celular, el mapa se mueve con dos dedos (con uno se sigue bajando la página). «Ver en Google Maps» abre el lugar en Google Maps.</p>
   </div>
 </section>
 
@@ -1406,6 +1428,7 @@ const step=dir=>{const car=$("car"),k=carState(),t=car.children[Math.max(0,Math.
 $("arrL").onclick=()=>step(-1);$("arrR").onclick=()=>step(1);
 new ResizeObserver(carState).observe($("car"));
 
+function goTo(el,off){if(!el)return;const y=Math.max(0,Math.round(el.getBoundingClientRect().top+scrollY-(off==null?72:off)));try{window.scrollTo({top:y,behavior:"smooth"})}catch(e){window.scrollTo(0,y)}setTimeout(()=>{if(Math.abs(scrollY-y)>30)window.scrollTo(0,y)},700)}
 /* ---------- barrio ---------- */
 const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Ver en Google Maps</a></span>`:""}</span></li>`;
 function openCity(c,d){
@@ -1420,11 +1443,11 @@ function openCity(c,d){
   <div class="det"><ul class="steps">${x.it.map((it,j)=>{const nc=it[4]!==(x.it[j-1]||[])[4]&&x.cs.length>1;return (nc?`<li class="cty" style="--c:${C[it[4]].c}"><i></i>${it[4]}</li>`:"")+plan(it)}).join("")}</ul>
   ${x.g?`<p class="dg2">${ico("coin",2)}<span><b>Gasto aproximado por persona:</b> ${esc(x.g)}</span></p>`:""}${x.b?`<p class="dg2">${ico("umb",2)}<span><b>Plan B:</b> ${esc(x.b)}</span></p>`:""}<div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+pv.d:""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+nx.d:""} →</button></div></div></article>`}).join("");
   fixImgs($("hero"));
-  if(d!==shown[0].d)setTimeout(()=>{const el=$("d"+d);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})},150);
+  if(d!==shown[0].d)setTimeout(()=>goTo($("d"+d)),150);
 }
 $("s-city").addEventListener("click",e=>{
   if(e.target.closest("#back")){if(inApp)history.back();else go("");return}
-  const g=e.target.closest("[data-gd]");if(g){const d=+g.dataset.gd,x=dayOf(d);if(!x)return;if($("d"+d)){$("d"+d).classList.add("open");$("d"+d).querySelector(".dh").setAttribute("aria-expanded","true");$("d"+d).scrollIntoView({behavior:"smooth",block:"start"})}else{pend=d;go(C[x.c].slug)}return}
+  const g=e.target.closest("[data-gd]");if(g){const d=+g.dataset.gd,x=dayOf(d);if(!x)return;if($("d"+d)){$("d"+d).classList.add("open");$("d"+d).querySelector(".dh").setAttribute("aria-expanded","true");goTo($("d"+d))}else{pend=d;go(C[x.c].slug)}return}
   const h=e.target.closest(".dh");if(h){const a=h.parentNode;a.classList.toggle("open");h.setAttribute("aria-expanded",a.classList.contains("open"))}});
 
 /* ---------- mapa (Leaflet + OpenStreetMap; sin conexión, costa dibujada) ---------- */
@@ -1435,14 +1458,43 @@ const popHtml=p=>`<div class="lpop"><b>${esc(p[0])}</b><small>${esc(p[4])}</smal
 function initMap(){if(LM||!window.L)return;
   LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true,dragging:!L.Browser.mobile,touchZoom:true});LM.attributionControl.setPrefix(false);
   const sea=L.polygon(SEA,{stroke:false,fillColor:"#a9cfdc",fillOpacity:1,interactive:false}).addTo(LM);
-  const tl=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:"abc",maxZoom:19,attribution:"© OpenStreetMap"}).addTo(LM);
+  const tl=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:"abc",maxZoom:19,crossOrigin:true,attribution:"© OpenStreetMap"}).addTo(LM);
   tl.on("tileload",()=>{if(!tilesOk){tilesOk=true;LM.removeLayer(sea);$("mapw").classList.add("tiles")}});
   MK=PL.map((p,i)=>L.marker([p[1],p[2]],{icon:L.divIcon({className:"lpin"+(p[3]==="hotel"?" h":""),html:pinHtml(i,p),iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:p[0],riseOnHover:true,zIndexOffset:p[3]==="hotel"?1000:0}).bindPopup(popHtml(p),{maxWidth:240,autoPanPadding:[20,20]}));
   MK.forEach(m=>m.addTo(LM));
+  meControl();$("memsg").onclick=e=>{e.stopPropagation();hideMe()};
   /* con dos dedos sobre el mapa se mueve y agranda el mapa, no toda la app (como en el mapa de Viajes por Catalunya) */
   const mw=$("mapw"),stop=e=>{if(e.touches&&e.touches.length>1)e.preventDefault()};
   mw.addEventListener("touchstart",stop,{passive:false});mw.addEventListener("touchmove",stop,{passive:false});
   ["gesturestart","gesturechange","gestureend"].forEach(t=>mw.addEventListener(t,e=>e.preventDefault(),{passive:false}))}
+/* ---------- «Dónde estoy»: punto azul con GPS y flecha con la brújula (funciona sin internet) ---------- */
+let ME=null,MEACC=null,WID=null,meOn=false,meFirst=true,HEAD=null,meRot=0;
+function meIcon(){return L.divIcon({className:"mepin",html:'<div class="me"><b class="dot"></b><div class="merot"><svg class="arw" viewBox="0 0 44 44"><path d="M22 5 34 36 22 29 10 36Z" fill="#7cc0ff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg></div></div>',iconSize:[44,44],iconAnchor:[22,22]})}
+function setHead(h){if(h==null||isNaN(h))return;HEAD=h;const el=document.querySelector(".mepin .merot");if(!el)return;
+  let d=((h-meRot)%360+540)%360-180;meRot+=d;el.style.transform=`rotate(${meRot}deg)`;el.parentNode.classList.add("hd")}
+function onOri(e){let h=null;if(typeof e.webkitCompassHeading==="number")h=e.webkitCompassHeading;else if(e.absolute&&e.alpha!=null)h=360-e.alpha;
+  if(h==null)return;const so=(screen.orientation&&screen.orientation.angle)||window.orientation||0;setHead((h+so+360)%360)}
+function startCompass(){const go=()=>{if("ondeviceorientationabsolute" in window)addEventListener("deviceorientationabsolute",onOri,true);else addEventListener("deviceorientation",onOri,true)};
+  try{if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(go,go)}else go()}catch(e){go()}
+  setTimeout(()=>{if(HEAD==null&&meOn)alertMe("La brújula no responde: verás el punto azul, pero sin la flecha. Si es un iPhone, permite «Movimiento y orientación» al tocar el botón.")},6000)}
+function meMsg(t){const b=$("mebtn");if(b)b.dataset.st=t||""}
+function startMe(){if(!navigator.geolocation){alertMe("Este teléfono no da la ubicación.");return}
+  meOn=true;meFirst=true;meMsg("buscando");startCompass();
+  WID=navigator.geolocation.watchPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];meMsg("ok");
+    if(!ME){ME=L.marker(ll,{icon:meIcon(),zIndexOffset:1000,interactive:false}).addTo(LM);MEACC=L.circle(ll,{radius:p.coords.accuracy,color:"#2f80ff",weight:1,opacity:.5,fillColor:"#2f80ff",fillOpacity:.12,interactive:false}).addTo(LM);if(HEAD!=null)setTimeout(()=>setHead(HEAD),0)}
+    else{ME.setLatLng(ll);MEACC.setLatLng(ll).setRadius(p.coords.accuracy)}
+    if(HEAD==null&&p.coords.heading!=null&&!isNaN(p.coords.heading)&&p.coords.speed>0.5)setHead(p.coords.heading);
+    if(meFirst){meFirst=false;const far=LM.distance(ll,[-12.1211,-77.0297])>25000;if(far)alertMe("Estás lejos de Lima. Tu posición aparecerá en el mapa cuando estés allí.");else LM.setView(ll,Math.max(LM.getZoom(),17))}},
+   err=>{meMsg("");alertMe(err.code===1?"Para ver dónde estás, permite la ubicación en el teléfono (Ajustes del navegador).":"No se encuentra la señal de GPS. Prueba en un sitio más abierto.")},
+   {enableHighAccuracy:true,maximumAge:5000,timeout:45000})}
+function stopMe(){if(WID!=null)navigator.geolocation.clearWatch(WID);WID=null}
+let meT=null;function alertMe(t){const m=$("memsg");if(!m)return;
+  m.innerHTML=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M12 11v5"/></svg><span>${esc(t)}</span><button type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>`;
+  m.hidden=false;requestAnimationFrame(()=>m.classList.add("in"));clearTimeout(meT);meT=setTimeout(()=>hideMe(),7000)}
+function hideMe(){const m=$("memsg");if(!m)return;m.classList.remove("in");setTimeout(()=>{if(!m.classList.contains("in"))m.hidden=true},300)}
+function meControl(){const C=L.Control.extend({options:{position:"topright"},onAdd(){const b=L.DomUtil.create("button","mebtn");b.id="mebtn";b.type="button";b.setAttribute("aria-label","Dónde estoy");
+  b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';b.title="Dónde estoy";
+  L.DomEvent.disableClickPropagation(b);b.onclick=()=>{if(!meOn||WID==null)startMe();else if(ME)LM.setView(ME.getLatLng(),Math.max(LM.getZoom(),17))};return b}});LM.addControl(new C())}
 const INV={mir:p=>p[1]<-12.098&&p[1]>-12.138,bar:p=>p[1]<-12.138,lima:()=>true};
 function fitView(){if(!LM)return;const pts=PL.filter(p=>(INV[mv](p)||(mv==="mir"&&p[3]==="hotel"))&&(!mk||p[3]===mk||p[3]==="hotel")).map(p=>[p[1],p[2]]);if(pts.length)LM.fitBounds(pts,{padding:[30,30],maxZoom:17})}
 function applyFilter(){MK.forEach((m,i)=>{const on=!mk||PL[i][3]===mk||PL[i][3]==="hotel";if(on&&!LM.hasLayer(m))m.addTo(LM);if(!on&&LM.hasLayer(m))LM.removeLayer(m)})}
@@ -1453,7 +1505,7 @@ function renderMap(){
   requestAnimationFrame(()=>{initMap();LM.invalidateSize();applyFilter();fitView()})}
 $("mchips").onclick=e=>{const v=e.target.closest("[data-mv]");if(v){mv=v.dataset.mv;LM&&LM.closePopup();renderMap();return}const b=e.target.closest("[data-mk]");if(!b)return;mk=b.dataset.mk;LM&&LM.closePopup();renderMap()};
 $("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest("[data-pi]");if(!li||!LM)return;const i=+li.dataset.pi;if(mk&&PL[i][3]!==mk&&PL[i][3]!=="hotel"){mk="";renderMap()}
-  $("mapw").scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>{LM.setView([PL[i][1],PL[i][2]],Math.max(LM.getZoom(),15));MK[i].openPopup()},350)});
+  goTo($("mapw"));setTimeout(()=>{LM.setView([PL[i][1],PL[i][2]],Math.max(LM.getZoom(),15));MK[i].openPopup()},350)});
 
 /* ---------- dónde comer ---------- */
 let rb="";
@@ -1519,7 +1571,7 @@ let pend=0,inApp=false;
 const go=h=>{inApp=true;if(location.hash.slice(1)===h)route_();else location.hash=h};
 document.addEventListener("click",e=>{const o=e.target.closest("[data-open]");if(o&&o.dataset.open){pend=+o.dataset.day||0;go(C[o.dataset.open].slug);return}
   const g=e.target.closest("[data-go]");if(g&&g.tagName==="BUTTON"){go(g.dataset.go)}});
-function show(id){document.querySelectorAll(".app>section").forEach(s=>s.hidden=s.id!=="s-"+id);const tab=id==="city"||id==="viaje"?"":id;document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.go===tab?"true":"false"))}
+function show(id){document.querySelectorAll(".app>section").forEach(s=>s.hidden=s.id!=="s-"+id);if(id!=="mapa")stopMe();else if(meOn&&WID==null&&LM)startMe();const tab=id==="city"||id==="viaje"?"":id;document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.go===tab?"true":"false"))}
 function route_(){
   let h=decodeURIComponent(location.hash.slice(1));
   const m=h.match(/^prueba-(\d+)$/);if(m){SIM=dayOf(+m[1])?+m[1]:0;try{SIM?sessionStorage.setItem(PFX+"sim",SIM):sessionStorage.removeItem(PFX+"sim")}catch(e){}history.replaceState(null,"",location.pathname+location.search);h=""}
@@ -1536,7 +1588,10 @@ document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2
 route_();loadWx();fixImgs(document);new MutationObserver(()=>fixImgs(document)).observe(document.querySelector(".app"),{childList:true,subtree:true});
 
 /* sin conexión: solo en la web publicada */
-if("serviceWorker" in navigator&&/github\.io$|pages\.dev$/.test(location.hostname)){try{navigator.serviceWorker.register("sw.js").catch(()=>{})}catch(e){}}
+function preTiles(){try{if(LS("tiles")===3)return;const t=(la,lo,z)=>{const n=2**z,r=la*Math.PI/180;return[Math.floor((lo+180)/360*n),Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n)]};
+  const u=[];[[-12.103,-77.058,-12.156,-77.014],[-12.040,-77.040,-12.053,-77.024],[-12.066,-77.075,-12.076,-77.030]].forEach(([la1,lo1,la2,lo2])=>{for(let z=14;z<=16;z++){const[a,b]=t(la1,lo1,z),[c,d]=t(la2,lo2,z);for(let x=a;x<=c;x++)for(let y=b;y<=d;y++)u.push(`https://${"abc"[(x+y)%3]}.tile.openstreetmap.org/${z}/${x}/${y}.png`)}});
+  let i=0,ok=0;const next=()=>{if(i>=u.length){if(ok>u.length*.9)SS("tiles",3);return}fetch(u[i++],{mode:"cors"}).then(r=>{if(r.ok)ok++}).catch(()=>{}).finally(()=>setTimeout(next,150))};next()}catch(e){}}
+if("serviceWorker" in navigator&&/github\.io$|pages\.dev$/.test(location.hostname)){try{navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{if(navigator.onLine)setTimeout(preTiles,4000)}).catch(()=>{})}catch(e){}}
 }
 </script>
 
@@ -1561,7 +1616,7 @@ function run(){if(!t.offsetParent)return;fit();align();hang();balance();window.m
 window.mvFitTitle=run;
 run();addEventListener("resize",run);document.fonts&&document.fonts.ready.then(run);setTimeout(run,600)})();
 </script>
-<div class="ths" id="thSheet" role="dialog" aria-modal="true" aria-label="Elegir estilo de la app" hidden><div class="thsb"><div class="thh"><b>Estilo de la app</b><button type="button" class="thx" id="thClose" aria-label="Cerrar">✕</button></div><div class="thrw"><button type="button" class="tha l" aria-label="Anterior">‹</button><div class="thc">
+<div class="ths" id="thSheet" role="dialog" aria-modal="true" aria-label="Elegir estilo de la app" hidden><div class="thsb"><div class="thh"><b>Estilo de la app</b><button type="button" class="thx" id="thClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="thrw"><button type="button" class="tha l" aria-label="Anterior"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="thc">
 <button type="button" class="tcard" data-thm="noche" aria-label="Estilo Noche elegante" title="Noche elegante"><span class="tp" style="--a:#0b0c0f;--b:#151920;--c:#b5cbf0;--d:#eef1f5"><i></i><i></i><i></i></span></button>
 <button type="button" class="tcard" data-thm="luminoso" aria-label="Estilo Luminoso negro" title="Luminoso negro"><span class="tp" style="--a:#f7f7f5;--b:#efefec;--c:#111214;--d:#e5402b"><i></i><i></i><i></i></span></button>
 <button type="button" class="tcard" data-thm="cobalto" aria-label="Estilo Luminoso azul" title="Luminoso azul"><span class="tp" style="--a:#f6f7fb;--b:#e9eefa;--c:#1c3fa0;--d:#e5402b"><i></i><i></i><i></i></span></button>
@@ -1574,7 +1629,7 @@ run();addEventListener("resize",run);document.fonts&&document.fonts.ready.then(r
 <button type="button" class="tcard" data-thm="contraste" aria-label="Estilo Alto contraste" title="Alto contraste"><span class="tp" style="--a:#000000;--b:#1c1c1c;--c:#ffffff;--d:#ffd400"><i></i><i></i><i></i></span></button>
 <button type="button" class="tcard" data-thm="rosa" aria-label="Estilo Rosado lady" title="Rosado lady"><span class="tp" style="--a:#fcf1f4;--b:#f6e1e8;--c:#c94f7c;--d:#c94f7c"><i></i><i></i><i></i></span></button>
 <button type="button" class="tcard" data-thm="morado" aria-label="Estilo Morado inclusivo" title="Morado inclusivo"><span class="tp" style="--a:#17122a;--b:#2a2148;--c:#c4b2ff;--d:#c4b2ff"><i></i><i></i><i></i></span></button>
-</div><button type="button" class="tha r" aria-label="Siguiente">›</button></div><div class="thd" aria-hidden="true"></div></div></div>
+</div><button type="button" class="tha r" aria-label="Siguiente"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="thd" aria-hidden="true"></div></div></div>
 <script>
 /* estilo de la app: el del cuestionario por defecto; el viajero puede cambiarlo y queda guardado */
 (function(){const QUIZ="calido",K="lf-theme",TC={noche:"#0b0c0f",luminoso:"#f7f7f5",cobalto:"#f6f7fb",calido:"#f6efe3",natura:"#111d17",sepia:"#f3ead8",mar:"#f4f8fb",atardecer:"#1e1424",nordico:"#eef0f2",contraste:"#000000",rosa:"#fcf1f4",morado:"#17122a"};
