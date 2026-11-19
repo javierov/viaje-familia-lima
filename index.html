@@ -1150,12 +1150,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </section>
 
 <section id="s-mapa" hidden>
-  <div class="ptl"><h1>Mapa</h1><p>Los lugares del viaje. Toca un punto para ver cómo llegar.</p></div>
+  <div class="ptl"><h1>Mapa</h1><p>Los lugares del viaje. Toca un punto para ver qué es.</p></div>
   <div class="pad">
     <div class="mchips" id="mchips"></div>
     <div class="mapw" id="mapw"></div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="pin"></i></span>Todos los lugares</h3><ul class="plist" id="plist"></ul></div>
-    <p class="note" style="margin-top:12px;font-size:13px">Toca un punto para ver qué es y cómo llegar. En el celular, el mapa se mueve con dos dedos (con uno se sigue bajando la página). «Cómo llegar» abre Google Maps.</p>
+    <p class="note" style="margin-top:12px;font-size:13px">Toca un punto para ver qué es. En el celular, el mapa se mueve con dos dedos (con uno se sigue bajando la página). «Ver en Google Maps» abre el lugar en Google Maps.</p>
   </div>
 </section>
 
@@ -1237,7 +1237,7 @@ const C={
 const STOPS=[["Miraflores","19 – 23 nov","Tu barrio: el hotel, el malecón y el mar","El hotel y el mar"],
  ["Centro histórico","vie 20 · sáb 21","Casa Aliaga, la Catedral, el Museo Larco y las fuentes","Lima colonial"],
  ["Barranco","vie 20 · dom 22","Cala, el Puente de los Suspiros y los postres de antes","Arte y mar"]];
-const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
+const route=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, barrio] */
 const DAYS=[
  {d:19,c:"Miraflores",cs:["Miraflores"],t:"Llegada a Lima",w:"Vuelo de la tarde y traslado al hotel",g:"S/ 0 – 40 (si cenan algo al llegar)",it:[
@@ -1407,7 +1407,7 @@ $("arrL").onclick=()=>step(-1);$("arrR").onclick=()=>step(1);
 new ResizeObserver(carState).observe($("car"));
 
 /* ---------- barrio ---------- */
-const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Cómo llegar</a></span>`:""}</span></li>`;
+const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Ver en Google Maps</a></span>`:""}</span></li>`;
 function openCity(c,d){
   const st=STOPS.find(x=>x[0]===c),days=DAYS.filter(x=>x.cs.includes(c)),t=T();
   if(!d||!DAYS.some(x=>x.d===d))d=t.ph==="trip"&&days.some(x=>x.d===t.d)?t.d:days[0].d;
@@ -1431,7 +1431,7 @@ $("s-city").addEventListener("click",e=>{
 const SEA=[[-11.95,-77.22],[-11.98,-77.14],[-12.06,-77.15],[-12.075,-77.165],[-12.078,-77.135],[-12.081,-77.10],[-12.087,-77.085],[-12.094,-77.07],[-12.104,-77.057],[-12.115,-77.047],[-12.126,-77.0405],[-12.134,-77.035],[-12.145,-77.0295],[-12.158,-77.026],[-12.168,-77.03],[-12.170,-77.045],[-12.26,-77.045],[-12.26,-77.22]];
 let LM=null,MK=[],mk="",mv="mir",tilesOk=false;
 const pinHtml=(i,p)=>`<span style="background:${PK[p[3]][1]}">${p[3]==="hotel"?"H":i}</span>`;
-const popHtml=p=>`<div class="lpop"><b>${esc(p[0])}</b><small>${esc(p[4])}</small><a class="btn" href="${route(p[5])}" target="_blank" rel="noopener">Cómo llegar</a></div>`;
+const popHtml=p=>`<div class="lpop"><b>${esc(p[0])}</b><small>${esc(p[4])}</small><a class="btn" href="${route(p[5])}" target="_blank" rel="noopener">Ver en Google Maps</a></div>`;
 function initMap(){if(LM||!window.L)return;
   LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true,dragging:!L.Browser.mobile,touchZoom:true});LM.attributionControl.setPrefix(false);
   const sea=L.polygon(SEA,{stroke:false,fillColor:"#a9cfdc",fillOpacity:1,interactive:false}).addTo(LM);
@@ -1448,8 +1448,8 @@ function fitView(){if(!LM)return;const pts=PL.filter(p=>(INV[mv](p)||(mv==="mir"
 function applyFilter(){MK.forEach((m,i)=>{const on=!mk||PL[i][3]===mk||PL[i][3]==="hotel";if(on&&!LM.hasLayer(m))m.addTo(LM);if(!on&&LM.hasLayer(m))LM.removeLayer(m)})}
 function renderMap(){
   $("mchips").innerHTML=[["mir","Miraflores"],["bar","Barranco"],["lima","Toda Lima"]].map(([k,l])=>`<button type="button" data-mv="${k}" class="${mv===k?"on":""}" style="--c:transparent">${l}</button>`).join("")+`<span style="flex-basis:100%;height:0"></span>`+[["","Todo","var(--steel2)"],["plan","Planes",PK.plan[1]],["comer","Comer",PK.comer[1]]].map(([k,l,c])=>`<button type="button" data-mk="${k}" class="${mk===k?"on":""}" style="--c:${c}"><i></i>${l}</button>`).join("");
-  $("plist").innerHTML=PL.map((p,i)=>`<li data-pi="${i}" style="--c:${PK[p[3]][1]}"><span class="nu">${p[3]==="hotel"?"H":i}</span><span><b>${esc(p[0])}</b><small>${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(p[0])}">${ico("go",2)}</a></li>`).join("");
-  if(!window.L){$("mapw").innerHTML=`<p class="note" style="padding:20px">El mapa no se pudo cargar. Abajo están todos los lugares con su «Cómo llegar».</p>`;return}
+  $("plist").innerHTML=PL.map((p,i)=>`<li data-pi="${i}" style="--c:${PK[p[3]][1]}"><span class="nu">${p[3]==="hotel"?"H":i}</span><span><b>${esc(p[0])}</b><small>${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Ver en Google Maps: ${esc(p[0])}">${ico("go",2)}</a></li>`).join("");
+  if(!window.L){$("mapw").innerHTML=`<p class="note" style="padding:20px">El mapa no se pudo cargar. Abajo están todos los lugares con su enlace a Google Maps.</p>`;return}
   requestAnimationFrame(()=>{initMap();LM.invalidateSize();applyFilter();fitView()})}
 $("mchips").onclick=e=>{const v=e.target.closest("[data-mv]");if(v){mv=v.dataset.mv;LM&&LM.closePopup();renderMap();return}const b=e.target.closest("[data-mk]");if(!b)return;mk=b.dataset.mk;LM&&LM.closePopup();renderMap()};
 $("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest("[data-pi]");if(!li||!LM)return;const i=+li.dataset.pi;if(mk&&PL[i][3]!==mk&&PL[i][3]!=="hotel"){mk="";renderMap()}
@@ -1460,7 +1460,7 @@ let rb="";
 function renderR(){
   $("rchips").innerHTML=[["","Todo"],["Miraflores","Miraflores"],["Barranco","Barranco"],["otros","Otros barrios"]].map(([k,l])=>`<button type="button" data-rc="${k}" class="${rb===k?"on":""}">${l}</button>`).join("");
   const ok=r=>!rb||(rb==="otros"?!["Miraflores","Barranco"].includes(r[1]):r[1]===rb);
-  $("rlist").innerHTML=Object.entries(RT).map(([k,[l,ic]])=>{const its=R.filter(r=>r[2]===k&&ok(r));return its.length?`<div class="box blk"><h3 class="bh"><span class="bi">${ico(ic,2)}</span>${l}</h3><ul class="res">${its.map(([n,ba,,pr,nt,q])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${esc(ba)} · <span class="pr">${pr}</span></span><small>${esc(nt)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
+  $("rlist").innerHTML=Object.entries(RT).map(([k,[l,ic]])=>{const its=R.filter(r=>r[2]===k&&ok(r));return its.length?`<div class="box blk"><h3 class="bh"><span class="bi">${ico(ic,2)}</span>${l}</h3><ul class="res">${its.map(([n,ba,,pr,nt,q])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${esc(ba)} · <span class="pr">${pr}</span></span><small>${esc(nt)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Ver en Google Maps: ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
 $("rchips").onclick=e=>{const b=e.target.closest("[data-rc]");if(!b)return;rb=b.dataset.rc;renderR()};
 
 /* ---------- útil ---------- */
