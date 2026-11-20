@@ -1645,5 +1645,52 @@ const ar=e.target.closest(".tha");if(ar&&tc){const w=tc.querySelector(".tcard").
 if(e.target.closest("#thOpen"))show(true);else if(e.target.closest("#thClose")||e.target===sh)show(false)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show(false)})})();
 </script>
+<script>
+/* Estadísticas anónimas para Javier (GoatCounter): sin cookies ni datos personales.
+   Solo cuenta en la versión publicada en github.io. Para que no cuenten tus visitas: abre cualquier app una vez con ?yo, o usa «No contar este equipo» en el panel. Vale para todas las apps de javierov.github.io en ese navegador. */
+(function(){
+  const GC="https://javierov.goatcounter.com/count", APP="Lima", Q="lf-gcq";
+  let test=/[?&]gctest\b/.test(location.search);
+  try{if(/[?&]yo\b/.test(location.search))localStorage.setItem("javierov-nostats","1")}catch(e){}
+  let off=false;try{off=localStorage.getItem("javierov-nostats")==="1"||localStorage.getItem("et-nostats")==="1"||!!sessionStorage.getItem("et-sim")||!!sessionStorage.getItem("lf-sim")}catch(e){}
+  if(!test&&(off||!/github\.io$/.test(location.hostname)))return;
+  /* demos: un enlace con ?de=nombre marca ese navegador (p. ej. ?de=cata); ?de=no lo quita */
+  let DE="";try{const m=location.search.match(/[?&]de=([^&]*)/);if(m){const v=decodeURIComponent(m[1]).toLowerCase().replace(/[^a-z0-9ñáéíóú-]/g,"").slice(0,20);if(!v||v==="no")localStorage.removeItem("javierov-demo");else localStorage.setItem("javierov-demo",v)}DE=localStorage.getItem("javierov-demo")||""}catch(e){}
+  const LOG=window.etStatsLog=[];
+  function url(p,ev,t){const u=new URLSearchParams({p:p,t:t||p,s:screen.width,rnd:Math.random().toString(36).slice(2)});if(ev)u.set("e","true");else if(document.referrer)u.set("r",document.referrer);return GC+"?"+u}
+  function load(){try{return JSON.parse(localStorage.getItem(Q)||"[]")}catch(e){return[]}}
+  function save(a){try{localStorage.setItem(Q,JSON.stringify(a.slice(-80)))}catch(e){}}
+  function send(u){if(test){LOG.push(decodeURIComponent(u));return}
+    if(!navigator.onLine){save(load().concat(u));return}
+    const i=new Image();i.onerror=()=>save(load().concat(u));i.src=u}
+  function flush(){if(!navigator.onLine)return;const a=load();if(!a.length)return;save([]);a.forEach(send)}
+  const ev=(name)=>send(url((DE?"demo:"+DE+" · ":"")+APP+" · "+name,true));
+  window.addEventListener("online",flush);flush();
+  /* visita */
+  if(DE)ev("abrió la app");else send(url(location.pathname,false,document.title));
+  /* pestañas */
+  const TAB={"":"Viaje",viaje:"Viaje",mapa:"Mapa",comer:"Comer",tiempo:"Tiempo",util:"Útil"};let lastTab=null;
+  function tab(){const h=decodeURIComponent(location.hash.slice(1));const n=TAB[h];if(n&&n!==lastTab){lastTab=n;ev("pestaña "+n)}}
+  window.addEventListener("hashchange",tab);tab();
+  /* toques */
+  const once={};const ev1=n=>{if(once[n])return;once[n]=1;ev(n)};
+  document.addEventListener("click",e=>{const t=e.target;
+    const dh=t.closest(".dh");if(dh){const st=dh.closest("[id^=st]");const k=st?parseInt(st.id.replace(/\D/g,""),10):NaN;let n=(typeof ST!=="undefined"&&ST[k])?ST[k].n:"";if(!n)n=(dh.querySelector(".t b")||dh.querySelector("b")||dh).textContent.trim().slice(0,40);ev1("abrió parada: "+n)}
+    const a=t.closest("a[href]");if(a){const h=a.getAttribute("href");
+      if(/^tel:/.test(h))ev("llamó: "+(a.textContent||"").trim().slice(0,30));
+      else if(/maps|goo\.gl/.test(h))ev("cómo llegar: "+(a.getAttribute("aria-label")||(a.closest("[id^=st]")?.querySelector(".t b")?.textContent)||(a.closest(".rc,li,article,div")?.querySelector("b")?.textContent)||"lugar").replace(/^Abrir\s+/,"").replace(/^Ver en Google Maps:\s*/,"").replace(/\s+en Google Maps$/,"").trim().slice(0,40))}
+    if(t.closest("[data-pt],[data-pi]"))ev1("ver en el mapa");
+    if(t.closest("[data-mk2]"))ev1("filtro del mapa");
+    if(t.closest(".mebtn"))ev1("usó «Dónde estoy»");
+    if(t.closest("#thBtn,[aria-controls=thSheet],.thbtn"))ev1("abrió «Estilo app»");
+  },true);
+  /* «Dónde estoy» y cambio de estilo */
+  let th=document.documentElement.dataset.theme;
+  new MutationObserver(()=>{const n=document.documentElement.dataset.theme;if(n&&n!==th){th=n;ev("estilo: "+n)}}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  /* tiempo de uso (solo con la app en pantalla) */
+  const MARKS=[1,5,15,30,60];let sec=0;
+  setInterval(()=>{if(document.visibilityState!=="visible")return;sec+=5;const m=sec/60;if(MARKS.includes(m))ev("usó "+m+" min")},5000);
+})();
+</script>
 </body>
 </html>
