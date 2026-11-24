@@ -472,6 +472,7 @@ button.ft{font:inherit}
 .cc .n{white-space:nowrap;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
 .tel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px}
 .tel:last-child{border:0}.tel b{white-space:nowrap;color:var(--steel2)}.tel small{display:block;color:var(--soft);font-size:12.5px}
+.opi{display:flex;align-items:center;gap:8px;margin:12px 20px 4px;padding:10px 12px;border:1px solid var(--line2);border-radius:14px;background:var(--fill)}.opi[hidden]{display:none}.opi a{flex:1;color:var(--title);font-weight:700;font-size:14.5px;text-decoration:none;line-height:1.3}.opi button{flex:none;border:0;background:none;color:var(--mute);font:inherit;font-size:12px;padding:6px 4px;cursor:pointer;text-decoration:underline}
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1150,6 +1151,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="s-viaje">
   <div class="bnr" aria-hidden="true" id="bnr"></div>
   <div class="hh"><h1 class="brand">Lima Familia</h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">Lima · Perú</p><p class="sub2">19 – 23 de noviembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
+  <div class="opi" id="opi" hidden><a id="opiA" href="https://javierov.github.io/viajes-disenados-a-mano/opinion/?a=Lima%20Familia&amp;n=Sergio&amp;s=plan,mapa,donde,comer,tiempo,conversor,reservas,Traslados,seguro,tareas,emergencias" target="_blank" rel="noopener">¿Qué tal tu viaje? Cuéntamelo en un minuto&nbsp;→</a><button type="button" id="opiNo">Ahora no</button></div>
   <div class="carw"><div class="car" id="car"></div>
     <button type="button" class="arr l" id="arrL" aria-label="Barrio anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="arr r" id="arrR" aria-label="Barrio siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -1664,7 +1666,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
     if(!navigator.onLine){save(load().concat(u));return}
     const i=new Image();i.onerror=()=>save(load().concat(u));i.src=u}
   function flush(){if(!navigator.onLine)return;const a=load();if(!a.length)return;save([]);a.forEach(send)}
-  const ev=(name)=>send(url((DE?"demo:"+DE+" · ":"")+APP+" · "+name,true));
+  const ev=(name)=>send(url((DE?"demo:"+DE+" · ":"")+APP+" · "+name,true));window.lfEv=ev;
   window.addEventListener("online",flush);flush();
   /* visita */
   if(DE)ev("abrió la app");else send(url(location.pathname,false,document.title));
@@ -1690,6 +1692,20 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
   /* tiempo de uso (solo con la app en pantalla) */
   const MARKS=[1,5,15,30,60];let sec=0;
   setInterval(()=>{if(document.visibilityState!=="visible")return;sec+=5;const m=sec/60;if(MARKS.includes(m))ev("usó "+m+" min")},5000);
+})();
+</script>
+<script>
+/* encuesta común de después del viaje (ver «encuesta-post-viaje.md»): aparece desde el lun 23 a las 10:25 hora de Lima (2 h 30 min antes del vuelo LA651) y se queda hasta que la conteste. ?veropinion la muestra siempre. */
+(function(){
+  const el=document.getElementById("opi");if(!el)return;
+  const DESDE=Date.UTC(2026,10,23,15,25),KEY="tvdm-opinion:Lima Familia",NO="lf-opinion-no";
+  const hoy=()=>new Date(Date.now()-5*36e5).toISOString().slice(0,10);
+  function ver(){let c=false,n="";try{c=!!localStorage.getItem(KEY);n=localStorage.getItem(NO)||""}catch(e){}
+    const forz=/[?&]veropinion\b/.test(location.search);
+    el.hidden=!(forz||(!c&&Date.now()>=DESDE&&n!==hoy()))}
+  document.getElementById("opiNo").addEventListener("click",()=>{try{localStorage.setItem(NO,hoy())}catch(e){}el.hidden=true});
+  document.getElementById("opiA").addEventListener("click",()=>{try{window.lfEv&&window.lfEv("abrió la encuesta")}catch(e){}});
+  ver();document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")ver()});setInterval(ver,6e4);
 })();
 </script>
 </body>

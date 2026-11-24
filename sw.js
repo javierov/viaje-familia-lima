@@ -1,5 +1,5 @@
 /* copia sin conexión de «Lima Familia»: solo toca sus propias copias (prefijo lf-) */
-const CACHE="lf-v7",T="lf-mapa",FILES=["./","index.html","manifest.json","icono.png","icono-192.png","apple-touch-icon.png","favicon-32.png","fotos/miraflores.jpg","fotos/centro.jpg","fotos/barranco.jpg","polizas/poliza-677989.bin","polizas/poliza-677995.bin","polizas/poliza-677994.bin"];
+const CACHE="lf-v8",T="lf-mapa",FILES=["./","index.html","manifest.json","icono.png","icono-192.png","apple-touch-icon.png","favicon-32.png","fotos/miraflores.jpg","fotos/centro.jpg","fotos/barranco.jpg","polizas/poliza-677989.bin","polizas/poliza-677995.bin","polizas/poliza-677994.bin"];
 /* cada archivo por separado: si uno falla, el resto queda guardado igual */
 self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>Promise.allSettled(FILES.map(f=>fetch(new Request(f,{cache:"reload"})).then(r=>{if(r.ok)return c.put(f,r)})))).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("lf-")&&k!==CACHE&&k!==T).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
